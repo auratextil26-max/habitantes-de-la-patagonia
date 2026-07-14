@@ -182,3 +182,8 @@ footer {
   .hero-content { padding: 0 48px 74px; }
   .facts { grid-template-columns: repeat(2, 1fr); }
 }
+.logo{
+    width: 220px;
+    height: auto;
+    display: block;
+}
