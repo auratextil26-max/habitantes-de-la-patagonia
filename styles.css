@@ -46,7 +46,7 @@ body {
   letter-spacing: .12em;
 }
 .hero {
-  min-height: 100svh;
+  min-height: 100vh;
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -66,10 +66,10 @@ body {
     width: 64%;
     background:
       linear-gradient(to top, rgba(4,7,5,.72) 2%, rgba(4,7,5,.08) 55%, rgba(4,7,5,.02)),
-      url("carpintero-negro.jpg") center 58% / 80% no-repeat;
+      url("carpintero-negro.jpg") center 58% / contain no-repeat;
     background-color: #0b100d;
-  }
-
+   }
+}
   .hero-content {
     width: 42%;
     padding-left: 48px;
