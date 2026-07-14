@@ -106,7 +106,7 @@ h1, h2 {
   margin: 0;
 }
 h1 {
-  font-size: clamp(4rem, 17vw, 8rem);
+  font-size: clamp(3.6rem, 5.8vw, 6rem);
   letter-spacing: -.05em;
 }
 h2 {
@@ -213,7 +213,7 @@ body {
   }
 
   .hero-content h1 {
-    font-size: clamp(3rem, 5vw, 5rem);
+    font-size: clamp(3.6rem, 5.8vw, 6rem);
     line-height: .92;
     margin: 0;
   }
