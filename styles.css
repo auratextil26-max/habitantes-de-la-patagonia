@@ -199,3 +199,22 @@ footer {
     display: block;
     object-fit: contain;
 }
+html,
+body {
+  overflow-x: hidden;
+}
+
+@media (min-width: 900px) {
+  .hero-content {
+    width: 36%;
+    max-width: 36%;
+    box-sizing: border-box;
+    padding: 0 18px 74px 48px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(3rem, 5vw, 5rem);
+    line-height: .92;
+    margin: 0;
+  }
+}
