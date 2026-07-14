@@ -188,13 +188,26 @@ footer {
   border-top: 1px solid var(--line);
   color: var(--muted);
 }
-@media (min-width: 700px) {
-  .section { padding: 105px 48px; }
-  .hero-content { padding: 0 48px 74px; }
+@media (min-width: 900px) {
+  .topbar{
+    padding: 24px 36px; 
+  }
+  .hero-content{
+    width:36%;
+    max-width:36%;
+    box-sizing:border-box;
+    padding:60px 18px 74px 48px;
+  } 
+  .hero-content h1{
+    font-size:clamp(3rem,5vw,5rem);
+    line-height:.92;
+    magin:0;
+  }
+}  
   .facts { grid-template-columns: repeat(2, 1fr); }
 }
 .logo{
-    width: 185px;
+    width: 110px;
     height: auto;
     display: block;
     object-fit: contain;
