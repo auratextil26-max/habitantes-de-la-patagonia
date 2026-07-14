@@ -75,7 +75,7 @@ body {
         rgba(4,7,5,.08) 55%, 
         rgba(4,7,5,.02)
       ),
-      url("carpintero-negro.jpg") center center / contain no-repeat;
+      url("carpintero-negro.jpg") 65% enter / contain no-repeat;
     background-color: #0b100d;
    }
 }
