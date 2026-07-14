@@ -64,7 +64,7 @@ body {
     width: 62%;
     background:
       linear-gradient(to top, rgba(4,7,5,.72) 2%, rgba(4,7,5,.08) 55%, rgba(4,7,5,.02)),
-      url("carpintero-negro.jpg") center center / contain no-repeat;
+      url("carpintero-negro.jpg") center center / 80% no-repeat;
     background-color: #0b100d;
   }
 
@@ -73,7 +73,6 @@ body {
     padding-left: 48px;
     padding-bottom: 74px;
   }
-
   h1 {
     font-size: clamp(4rem, 8vw, 7rem);
   }
