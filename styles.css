@@ -44,7 +44,7 @@ body {
   letter-spacing: .12em;
 }
 .hero {
-  min-height: calc(100svh - 120px);
+  min-height: 100svh;
   position: relative;
   display: flex;
   align-items: flex-end;
