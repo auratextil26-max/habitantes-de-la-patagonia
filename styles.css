@@ -58,8 +58,8 @@ body {
   background:
     linear-gradient(
       to top, 
-      rgba(4,7,5,.98) 2%, 
-      rgba(4,7,5,.35) 55%, 
+      rgba(4,7,5,.98) 2%
+      rgba(4,7,5,.35) 55%
       rgba(4,7,5,.08)
     ),
     url("carpintero-negro.jpg") center 58% / cover no-repeat;
@@ -190,7 +190,7 @@ footer {
 }
 @media (min-width: 900px) {
   .topbar{
-    padding: 24px 36px; 
+    padding: 36px 36px; 
   }
   .hero-content{
     width:36%;
@@ -207,7 +207,7 @@ footer {
   .facts { grid-template-columns: repeat(2, 1fr); }
 }
 .logo{
-    width: 110px;
+    width: 130px;
     height: auto;
     display: block;
     object-fit: contain;
