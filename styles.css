@@ -233,14 +233,14 @@ body {
     margin: 0;
   }
 }
-header.barra-superior > img.logo {
-    width: 120px !important;
-    min-width: 120px !important;
-    max-width: 120px !important;
+header.topbar > img.logo {
+    width: 160px !important;
+    min-width: 160px !important;
+    max-width: 160px !important;
 
     height: auto !important;
     min-height: 0 !important;
-    max-height: 120px !important;
+    max-height: 620px !important;
 
     object-fit: contain !important;
 
@@ -253,6 +253,6 @@ header.barra-superior > img.logo {
     margin: 0 !important;
     padding: 0 !important;
 
-    flex: 0 0 120px !important;
+    flex: 0 0 160px !important;
     z-index: 9999 !important;
 }
