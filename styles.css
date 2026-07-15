@@ -257,7 +257,19 @@ header.topbar > img.logo {
     z-index: 9999 !important;
 }
 @media (max-width: 899px) {
-    .hero::before {
+  header.topbar > img.logo {
+        width: 170px !important;
+        min-width: 170px !important;
+        max-width: 170px !important;
+        height: auto !important;
+
+        position: absolute !important;
+        top: 55px !important;
+        left: 28px !important;
+
+        z-index: 10 !important;
+  }
+  .hero::before {
         content: "";
         position: absolute;
         inset: 0;
