@@ -206,8 +206,9 @@ footer {
 }  
   .facts { grid-template-columns: repeat(2, 1fr); }
 }
-.logo{
-    width: 130px;
+.logo {
+    width: 180px;
+    max-width: 40vw;
     height: auto;
     display: block;
     object-fit: contain;
