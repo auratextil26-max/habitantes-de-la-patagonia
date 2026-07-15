@@ -207,11 +207,12 @@ footer {
   .facts { grid-template-columns: repeat(2, 1fr); }
 }
 .logo {
-    width: 180px;
-    max-width: 40vw;
-    height: auto;
+    width: 110px !important;
+    max-width: 110vw !important;
+    height: auto !important;
     display: block;
     object-fit: contain;
+    flex-shrink: 0;
 }
 html,
 body {
