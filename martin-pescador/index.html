@@ -2,215 +2,295 @@
 <html lang="es">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b100d">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b100d">
 
-  <meta
-    name="description"
-    content="Sonidos de la Patagonia de Aura Textil: conoce y escucha al Cóndor Andino."
-  >
+<meta
+name="description"
+content="Sonidos de la Patagonia de Aura Textil: conoce y escucha al Martín Pescador.">
 
-  <title>Cóndor Andino | Aura Textil</title>
+<title>Martín Pescador | Aura Textil</title>
 
-  <link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../styles.css">
 
-  <style>
-    .hero::before {
-      background:
-        linear-gradient(
-          to top,
-          rgba(4, 7, 5, 0.72) 2%,
-          rgba(4, 7, 5, 0.08) 55%,
-          rgba(4, 7, 5, 0.02)
-        ),
-        url("condor.jpg") center center / contain no-repeat !important;
+<style>
+.hero::before{
+background:
+linear-gradient(
+to top,
+rgba(4,7,5,.72) 2%,
+rgba(4,7,5,.08) 55%,
+rgba(4,7,5,.02)
+),
+url("martin-pescador.jpg") center center / contain no-repeat !important;
 
-      background-color: #0b100d !important;
-    }
+background-color:#0b100d!important;
+}
 
-    @media (max-width: 899px) {
-      .hero::before {
-        background:
-          linear-gradient(
-            to bottom,
-            rgba(4, 7, 5, 0.02) 20%,
-            rgba(4, 7, 5, 0.12) 70%,
-            #0b100d 100%
-          ),
-          url("condor.jpg") center top / contain no-repeat !important;
+@media(max-width:899px){
 
-        background-color: #0b100d !important;
-      }
+.hero::before{
 
-      .hero-content {
-        padding-bottom:
-          calc(120px + env(safe-area-inset-bottom)) !important;
-      }
-    }
-  </style>
+background:
+
+linear-gradient(
+
+to bottom,
+
+rgba(4,7,5,.02) 20%,
+
+rgba(4,7,5,.12) 70%,
+
+#0b100d 100%
+
+),
+
+url("martin-pescador.jpg") center top / contain no-repeat!important;
+
+background-color:#0b100d!important;
+
+}
+
+.hero-content{
+
+padding-bottom:
+
+calc(120px + env(safe-area-inset-bottom))!important;
+
+}
+
+}
+</style>
+
 </head>
 
 <body>
 
-  <header class="topbar">
-    <img src="../logo.png" alt="Aura Textil" class="logo">
-    <div class="edition">PS–004</div>
-  </header>
+<header class="topbar">
 
-  <main>
+<img src="../logo.png" alt="Aura Textil" class="logo">
 
-    <section class="hero">
-      <div class="hero-content">
+<div class="edition">PS-006</div>
 
-        <p class="eyebrow">
-          ESCANEA. ESCUCHA. DESCUBRE.
-        </p>
+</header>
 
-        <h1>Cóndor<br>Andino</h1>
+<main>
 
-        <p class="scientific">
-          <em>Vultur gryphus</em>
-        </p>
+<section class="hero">
 
-        <button
-          id="playBtn"
-          type="button"
-          aria-label="Reproducir sonido del Cóndor Andino"
-        >
-          ▶ Escuchar su sonido
-        </button>
+<div class="hero-content">
 
-        <audio id="audio" preload="metadata">
-          <source src="condor.mp3" type="audio/mpeg">
-          Tu navegador no permite reproducir audio.
-        </audio>
+<p class="eyebrow">
 
-      </div>
+ESCANEA.<br>
+ESCUCHA.<br>
+DESCUBRE.
 
-      <div class="photo-credit">
-        Fotografía: @foto_faunachile
-      </div>
-    </section>
+</p>
 
-    <section class="section">
+<h1>Martín<br>Pescador</h1>
 
-      <p class="kicker">EL SEÑOR DE LOS ANDES</p>
+<p class="scientific">
 
-      <h2>
-        Una figura majestuosa que domina los cielos de la Patagonia.
-      </h2>
+<em>Megaceryle torquata</em>
 
-      <p>
-        El cóndor andino es una de las aves voladoras más grandes del mundo
-        y un símbolo de la cordillera de los Andes. Gracias a sus enormes
-        alas, puede recorrer grandes distancias aprovechando las corrientes
-        de aire sin realizar un esfuerzo constante.
-      </p>
+</p>
 
-      <p>
-        Su presencia cumple una función esencial en la naturaleza, ya que
-        se alimenta de animales muertos y contribuye a limpiar los
-        ecosistemas. En la Patagonia puede observarse sobre montañas,
-        acantilados y extensas zonas abiertas.
-      </p>
+<button id="playBtn">
 
-    </section>
+▶ Escuchar su sonido
 
-    <section class="facts">
+</button>
 
-      <article>
-        <span>01</span>
-        <h3>Vuelo majestuoso</h3>
-        <p>
-          Aprovecha las corrientes térmicas para elevarse y desplazarse.
-        </p>
-      </article>
+<audio id="audio">
 
-      <article>
-        <span>02</span>
-        <h3>Gran envergadura</h3>
-        <p>
-          Sus alas pueden superar ampliamente los tres metros de extensión.
-        </p>
-      </article>
+<source src="martin-pescador.mp3" type="audio/mpeg">
 
-      <article>
-        <span>03</span>
-        <h3>Guardián natural</h3>
-        <p>
-          Al consumir carroña ayuda a mantener limpios los ecosistemas.
-        </p>
-      </article>
+</audio>
 
-      <article>
-        <span>04</span>
-        <h3>Vida prolongada</h3>
-        <p>
-          Es una especie longeva y alcanza lentamente la edad reproductiva.
-        </p>
-      </article>
+</div>
 
-    </section>
+<div class="photo-credit">
 
-    <section class="section">
+Fotografía: @foto_faunachile
 
-      <p class="kicker">CONSERVACIÓN</p>
+</div>
 
-      <h2>
-        Proteger al cóndor es preservar uno de los grandes símbolos andinos.
-      </h2>
+</section>
 
-      <p>
-        La pérdida de hábitat, la contaminación y el envenenamiento
-        representan amenazas para esta especie. Su reproducción es lenta,
-        por lo que la protección de sus zonas de alimentación, descanso y
-        nidificación es fundamental para su conservación.
-      </p>
+<section class="section">
 
-    </section>
+<p class="kicker">
 
-    <section class="section credits">
+EL CAZADOR DE LOS RÍOS
 
-      <p class="kicker">CRÉDITOS</p>
+</p>
 
-      <div class="row">
-        <span>Fotografía</span>
-        <strong>@foto_faunachile</strong>
-      </div>
+<h2>
 
-      <div class="row">
-        <span>Experiencia y diseño</span>
-        <strong>Aura Textil</strong>
-      </div>
+Una de las aves más llamativas de la Patagonia.
 
-      <div class="row">
-        <span>Colección</span>
-        <strong>Sonidos de la Patagonia · PS–004</strong>
-      </div>
+</h2>
 
-    </section>
+<p>
 
-    <section class="section purpose">
+El Martín Pescador destaca por su gran pico, su llamativo plumaje y su extraordinaria precisión para capturar peces. Se encuentra habitualmente cerca de ríos, lagunas y humedales donde permanece atento desde una rama antes de lanzarse en un rápido vuelo hacia el agua.
 
-      <p class="kicker">NUESTRO PROPÓSITO</p>
+</p>
 
-      <p class="purpose-text">
-        En Aura Textil creemos que cada fotografía cuenta una historia
-        y que cada especie merece ser conocida, valorada y protegida.
-      </p>
+<p>
 
-    </section>
+Su presencia es un indicador de ecosistemas acuáticos saludables, siendo una especie clave para el equilibrio natural de los ambientes donde habita.
 
-  </main>
+</p>
 
-  <footer>
-    <strong>AURA TEXTIL</strong>
-    <p>Donde la Patagonia se convierte en arte.</p>
-  </footer>
+</section>
 
-  <script src="../script.js"></script>
+<section class="facts">
+
+<article>
+
+<span>01</span>
+
+<h3>Pescador experto</h3>
+
+<p>
+
+Se lanza en picada para capturar peces con gran precisión.
+
+</p>
+
+</article>
+
+<article>
+
+<span>02</span>
+
+<h3>Gran visión</h3>
+
+<p>
+
+Detecta presas desde largas distancias gracias a su excelente vista.
+
+</p>
+
+</article>
+
+<article>
+
+<span>03</span>
+
+<h3>Habitante de humedales</h3>
+
+<p>
+
+Vive cerca de ríos, lagunas y costas de toda la Patagonia.
+
+</p>
+
+</article>
+
+<article>
+
+<span>04</span>
+
+<h3>Símbolo de biodiversidad</h3>
+
+<p>
+
+Su presencia refleja ecosistemas acuáticos sanos.
+
+</p>
+
+</article>
+
+</section>
+
+<section class="section">
+
+<p class="kicker">
+
+CONSERVACIÓN
+
+</p>
+
+<h2>
+
+Cuidar los humedales es proteger al Martín Pescador.
+
+</h2>
+
+<p>
+
+La contaminación de ríos, la pérdida de vegetación ribereña y la degradación de los humedales amenazan los lugares donde esta especie encuentra alimento y refugio.
+
+</p>
+
+</section>
+
+<section class="section credits">
+
+<p class="kicker">
+
+CRÉDITOS
+
+</p>
+
+<div class="row">
+
+<span>Fotografía</span>
+
+<strong>@foto_faunachile</strong>
+
+</div>
+
+<div class="row">
+
+<span>Experiencia y diseño</span>
+
+<strong>Aura Textil</strong>
+
+</div>
+
+<div class="row">
+
+<span>Colección</span>
+
+<strong>Sonidos de la Patagonia · PS-006</strong>
+
+</div>
+
+</section>
+
+<section class="section purpose">
+
+<p class="kicker">
+
+NUESTRO PROPÓSITO
+
+</p>
+
+<p class="purpose-text">
+
+En Aura Textil creemos que cada fotografía cuenta una historia y que cada especie merece ser conocida, valorada y protegida.
+
+</p>
+
+</section>
+
+</main>
+
+<footer>
+
+<strong>AURA TEXTIL</strong>
+
+<p>Donde la Patagonia se convierte en arte.</p>
+
+</footer>
+
+<script src="../script.js"></script>
 
 </body>
-</html>
 
+</html>
