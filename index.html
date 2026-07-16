@@ -1,107 +1,840 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b100d">
-  <meta name="description" content="Patagonia Sonora de Aura Textil: conoce y escucha al Carpintero Negro.">
-  <title>Carpintero Negro | Aura Textil</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Habitantes de la Patagonia, una experiencia fotográfica y sonora creada por Aura Textil."
+  >
+
+  <title>Habitantes de la Patagonia | Aura Textil</title>
+
+  <style>
+    :root {
+      --fondo: #08100c;
+      --fondo-secundario: #0d1711;
+      --blanco: #f7f6f0;
+      --gris: #b8bdb9;
+      --verde: #c7e65b;
+      --borde: rgba(255, 255, 255, 0.13);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--fondo);
+      color: var(--blanco);
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    /* CABECERA */
+
+    .header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 26px 5%;
+    }
+
+    .header-logo img {
+      width: 155px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .header-link {
+      padding: 12px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: 0.3s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .header-link:hover {
+      background: var(--blanco);
+      color: #08100c;
+    }
+
+    /* PORTADA */
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      background-image:
+        linear-gradient(
+          90deg,
+          rgba(5, 10, 7, 0.94) 0%,
+          rgba(5, 10, 7, 0.67) 42%,
+          rgba(5, 10, 7, 0.12) 75%
+        ),
+        linear-gradient(
+          0deg,
+          rgba(5, 10, 7, 0.95) 0%,
+          rgba(5, 10, 7, 0) 45%
+        ),
+        url("guanaco/guanaco.jpg");
+
+      background-size: cover;
+      background-position: center;
+      padding: 160px 7% 90px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 850px;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      color: var(--verde);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+    }
+
+    .hero-label::before {
+      content: "";
+      width: 42px;
+      height: 1px;
+      background: var(--verde);
+    }
+
+    .hero h1 {
+      max-width: 900px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(58px, 9vw, 132px);
+      font-weight: 500;
+      line-height: 0.86;
+      letter-spacing: -5px;
+      margin-bottom: 32px;
+    }
+
+    .hero-description {
+      max-width: 590px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 38px;
+    }
+
+    .hero-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      padding: 17px 27px;
+      background: var(--blanco);
+      color: #07100a;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: 0.3s ease;
+    }
+
+    .hero-button span {
+      font-size: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .hero-button:hover {
+      background: var(--verde);
+    }
+
+    .hero-button:hover span {
+      transform: translateY(4px);
+    }
+
+    .hero-code {
+      position: absolute;
+      right: 5%;
+      bottom: 45px;
+      z-index: 2;
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+
+    /* INTRODUCCIÓN */
+
+    .intro {
+      display: grid;
+      grid-template-columns: 0.8fr 1.4fr;
+      gap: 90px;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 130px 6%;
+      border-bottom: 1px solid var(--borde);
+    }
+
+    .section-number {
+      color: var(--verde);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .intro h2 {
+      max-width: 880px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(38px, 5vw, 70px);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 32px;
+    }
+
+    .intro p {
+      max-width: 700px;
+      color: var(--gris);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    /* ESPECIES */
+
+    .species-section {
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 120px 5%;
+    }
+
+    .species-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 54px;
+    }
+
+    .species-header h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(46px, 6vw, 82px);
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -3px;
+    }
+
+    .species-header p {
+      max-width: 370px;
+      color: var(--gris);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .species-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .species-card {
+      position: relative;
+      min-height: 650px;
+      overflow: hidden;
+      background: #101712;
+      border: 1px solid var(--borde);
+    }
+
+    .species-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .species-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          0deg,
+          rgba(4, 9, 6, 0.94) 0%,
+          rgba(4, 9, 6, 0.25) 55%,
+          rgba(4, 9, 6, 0.05) 100%
+        );
+    }
+
+    .species-card:hover img {
+      transform: scale(1.045);
+    }
+
+    .species-information {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      z-index: 2;
+      width: 100%;
+      padding: 38px;
+    }
+
+    .species-code {
+      display: block;
+      color: var(--verde);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .species-name {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(35px, 4vw, 58px);
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -2px;
+      margin-bottom: 10px;
+    }
+
+    .scientific-name {
+      color: rgba(255, 255, 255, 0.65);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 16px;
+      font-style: italic;
+    }
+
+    .explore {
+      position: absolute;
+      right: 32px;
+      bottom: 35px;
+      z-index: 3;
+      display: grid;
+      place-items: center;
+      width: 54px;
+      height: 54px;
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 50%;
+      font-size: 24px;
+      transition: 0.3s ease;
+    }
+
+    .species-card:hover .explore {
+      background: var(--blanco);
+      color: #08100c;
+      transform: rotate(-35deg);
+    }
+
+    /* CIERRE */
+
+    .closing {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 75vh;
+      padding: 100px 7%;
+      text-align: center;
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(5, 12, 8, 0.78), rgba(5, 12, 8, 0.93)),
+        url("carpintero-negro.jpg");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .closing-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+    }
+
+    .closing-label {
+      color: var(--verde);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .closing h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(45px, 7vw, 96px);
+      font-weight: 400;
+      line-height: 0.98;
+      letter-spacing: -3px;
+      margin-bottom: 28px;
+    }
+
+    .closing p {
+      max-width: 650px;
+      margin: 0 auto;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    /* PIE DE PÁGINA */
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 35px 5%;
+      color: rgba(255, 255, 255, 0.5);
+      background: #050a07;
+      border-top: 1px solid var(--borde);
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* TABLET */
+
+    @media (max-width: 950px) {
+      .hero {
+        background-position: 62% center;
+      }
+
+      .hero h1 {
+        letter-spacing: -3px;
+      }
+
+      .intro {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .species-card {
+        min-height: 540px;
+      }
+
+      .species-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    /* CELULAR */
+
+    @media (max-width: 700px) {
+      .header {
+        padding: 22px 22px;
+      }
+
+      .header-logo img {
+        width: 112px;
+      }
+
+      .header-link {
+        padding: 10px 14px;
+        font-size: 10px;
+      }
+
+      .hero {
+        min-height: 100svh;
+        align-items: flex-end;
+        padding: 135px 24px 72px;
+        background-image:
+          linear-gradient(
+            0deg,
+            rgba(5, 10, 7, 0.97) 0%,
+            rgba(5, 10, 7, 0.45) 65%,
+            rgba(5, 10, 7, 0.2) 100%
+          ),
+          url("guanaco/guanaco.jpg");
+
+        background-position: 60% center;
+      }
+
+      .hero-label {
+        font-size: 10px;
+        letter-spacing: 1.7px;
+        margin-bottom: 18px;
+      }
+
+      .hero h1 {
+        font-size: clamp(54px, 17vw, 76px);
+        line-height: 0.9;
+        letter-spacing: -3px;
+        margin-bottom: 24px;
+      }
+
+      .hero-description {
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 28px;
+      }
+
+      .hero-button {
+        padding: 15px 21px;
+        font-size: 11px;
+      }
+
+      .hero-code {
+        display: none;
+      }
+
+      .intro {
+        padding: 85px 24px;
+      }
+
+      .intro h2 {
+        font-size: 43px;
+      }
+
+      .intro p {
+        font-size: 15px;
+      }
+
+      .species-section {
+        padding: 85px 16px;
+      }
+
+      .species-header {
+        margin-bottom: 36px;
+        padding: 0 8px;
+      }
+
+      .species-header h2 {
+        font-size: 50px;
+      }
+
+      .species-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .species-card {
+        min-height: 520px;
+      }
+
+      .species-information {
+        padding: 28px 25px;
+      }
+
+      .species-name {
+        max-width: 80%;
+        font-size: 40px;
+      }
+
+      .explore {
+        right: 22px;
+        bottom: 26px;
+        width: 48px;
+        height: 48px;
+      }
+
+      .closing {
+        min-height: 70vh;
+        padding: 90px 24px;
+      }
+
+      .closing h2 {
+        font-size: 53px;
+      }
+
+      .footer {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        padding: 30px 20px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <header class="topbar">
-      <img src="logo.png" alt="Aura Textil" class="logo">
-      <div class="edition">PS–001</div>
+
+  <header class="header">
+    <a href="#" class="header-logo" aria-label="Aura Textil">
+      <img src="logo.png" alt="Logo Aura Textil">
+    </a>
+
+    <a href="#especies" class="header-link">
+      Explorar colección
+    </a>
   </header>
 
   <main>
+
     <section class="hero">
+
       <div class="hero-content">
-        <p class="eyebrow">ESCANEA. ESCUCHA. DESCUBRE.</p>
-        <h1>Carpintero<br>Negro</h1>
-        <p class="scientific"><em>Campephilus magellanicus</em></p>
 
-        <button id="playBtn" type="button" aria-label="Reproducir sonido del Carpintero Negro">
-          ▶ Escuchar su sonido
-        </button>
+        <p class="hero-label">
+          Una experiencia fotográfica y sonora
+        </p>
 
-        <audio id="audio" preload="metadata">
-          <source src="carpintero-negro.mp3" type="audio/mpeg">
-          Tu navegador no permite reproducir audio.
-        </audio>
+        <h1>
+          Habitantes de la Patagonia
+        </h1>
+
+        <p class="hero-description">
+          Descubre la fauna que inspira nuestra colección.
+          Fotografías capturadas en la Patagonia chilena,
+          acompañadas por los sonidos de cada especie.
+        </p>
+
+        <a href="#especies" class="hero-button">
+          Comenzar la experiencia
+          <span>↓</span>
+        </a>
+
       </div>
 
-      <div class="photo-credit">Fotografía: @foto_faunachile</div>
-    </section>
-
-    <section class="section">
-      <p class="kicker">EL GUARDIÁN DEL BOSQUE AUSTRAL</p>
-      <h2>Una voz que resuena entre lengas y coigües.</h2>
-      <p>
-        El Carpintero Negro es una de las aves más emblemáticas de los bosques australes.
-        Sus golpes sobre los troncos le permiten comunicarse, marcar territorio y encontrar
-        alimento bajo la corteza.
+      <p class="hero-code">
+        Aura Textil · Patagonia Chilena
       </p>
-      <p>
-        Conocer su sonido es una forma de acercarnos al paisaje natural que inspira cada
-        diseño de Aura Textil.
-      </p>
+
     </section>
 
-    <section class="facts">
-      <article>
-        <span>01</span>
-        <h3>Gran tamaño</h3>
-        <p>Es el carpintero de mayor tamaño de Sudamérica.</p>
-      </article>
-      <article>
-        <span>02</span>
-        <h3>Bosque nativo</h3>
-        <p>Habita principalmente bosques maduros del sur de Chile y Argentina.</p>
-      </article>
-      <article>
-        <span>03</span>
-        <h3>Dimorfismo</h3>
-        <p>El macho destaca por su cabeza roja; la hembra presenta una coloración más oscura.</p>
-      </article>
-      <article>
-        <span>04</span>
-        <h3>Nidos excavados</h3>
-        <p>Construye cavidades en árboles que también pueden favorecer a otras especies.</p>
-      </article>
+    <section class="intro">
+
+      <div>
+        <p class="section-number">
+          01 — La colección
+        </p>
+      </div>
+
+      <div>
+        <h2>
+          La Patagonia convertida en una experiencia que puedes ver y escuchar.
+        </h2>
+
+        <p>
+          Cada especie fue fotografiada en su entorno natural.
+          Esta colección busca compartir la belleza de la fauna patagónica
+          y acercar su historia a quienes llevan nuestros diseños.
+        </p>
+      </div>
+
     </section>
 
-    <section class="section">
-      <p class="kicker">CONSERVACIÓN</p>
-      <h2>Proteger su hábitat es proteger la memoria viva de la Patagonia.</h2>
-      <p>
-        El Carpintero Negro depende de bosques nativos con árboles grandes y antiguos.
-        La conservación de estos ambientes es esencial para mantener sus lugares de
-        alimentación, refugio y reproducción.
-      </p>
+    <section class="species-section" id="especies">
+
+      <div class="species-header">
+
+        <div>
+          <p class="section-number">
+            02 — Especies
+          </p>
+
+          <h2>
+            Explora sus historias
+          </h2>
+        </div>
+
+        <p>
+          Selecciona una especie para conocerla,
+          observarla y escuchar su sonido.
+        </p>
+
+      </div>
+
+      <div class="species-grid">
+
+        <a href="carpintero-negro/" class="species-card">
+          <img
+            src="carpintero-negro.jpg"
+            alt="Carpintero Negro"
+          >
+
+          <div class="species-information">
+            <span class="species-code">PS—001</span>
+
+            <h3 class="species-name">
+              Carpintero Negro
+            </h3>
+
+            <p class="scientific-name">
+              Campephilus magellanicus
+            </p>
+          </div>
+
+          <span class="explore">↗</span>
+        </a>
+
+        <a href="puma/" class="species-card">
+          <img
+            src="puma/puma.jpg"
+            alt="Puma"
+          >
+
+          <div class="species-information">
+            <span class="species-code">PS—002</span>
+
+            <h3 class="species-name">
+              Puma
+            </h3>
+
+            <p class="scientific-name">
+              Puma concolor
+            </p>
+          </div>
+
+          <span class="explore">↗</span>
+        </a>
+
+        <a href="Flamenco/" class="species-card">
+          <img
+            src="Flamenco/flamenco.jpg"
+            alt="Flamenco Chileno"
+          >
+
+          <div class="species-information">
+            <span class="species-code">PS—003</span>
+
+            <h3 class="species-name">
+              Flamenco Chileno
+            </h3>
+
+            <p class="scientific-name">
+              Phoenicopterus chilensis
+            </p>
+          </div>
+
+          <span class="explore">↗</span>
+        </a>
+
+        <a href="condor/" class="species-card">
+          <img
+            src="condor/condor.jpg"
+            alt="Cóndor Andino"
+          >
+
+          <div class="species-information">
+            <span class="species-code">PS—004</span>
+
+            <h3 class="species-name">
+              Cóndor Andino
+            </h3>
+
+            <p class="scientific-name">
+              Vultur gryphus
+            </p>
+          </div>
+
+          <span class="explore">↗</span>
+        </a>
+
+        <a href="guanaco/" class="species-card">
+          <img
+            src="guanaco/guanaco.jpg"
+            alt="Guanaco"
+          >
+
+          <div class="species-information">
+            <span class="species-code">PS—005</span>
+
+            <h3 class="species-name">
+              Guanaco
+            </h3>
+
+            <p class="scientific-name">
+              Lama guanicoe
+            </p>
+          </div>
+
+          <span class="explore">↗</span>
+        </a>
+
+        <a href="martin-pescador/" class="species-card">
+          <img
+            src="martin-pescador/martin-pescador.jpg"
+            alt="Martín Pescador"
+          >
+
+          <div class="species-information">
+            <span class="species-code">PS—006</span>
+
+            <h3 class="species-name">
+              Martín Pescador
+            </h3>
+
+            <p class="scientific-name">
+              Megaceryle torquata
+            </p>
+          </div>
+
+          <span class="explore">↗</span>
+        </a>
+
+      </div>
+
     </section>
 
-    <section class="section credits">
-      <p class="kicker">CRÉDITOS</p>
-      <div class="row"><span>Fotografía</span><strong>@foto_faunachile</strong></div>
-      <div class="row"><span>Experiencia y diseño</span><strong>Aura Textil</strong></div>
-      <div class="row"><span>Colección</span><strong>Sonidos de la Patagonia · PS–001</strong></div>
+    <section class="closing">
+
+      <div class="closing-content">
+
+        <p class="closing-label">
+          Aura Textil
+        </p>
+
+        <h2>
+          Donde la Patagonia se convierte en arte.
+        </h2>
+
+        <p>
+          Una colección inspirada en la vida salvaje,
+          la fotografía y los paisajes del extremo sur de Chile.
+        </p>
+
+      </div>
+
     </section>
 
-    <section class="section purpose">
-      <p class="kicker">NUESTRO PROPÓSITO</p>
-      <p class="purpose-text">
-        En Aura Textil creemos que cada fotografía cuenta una historia y que cada especie
-        merece ser conocida y protegida.
-      </p>
-    </section>
   </main>
 
-  <footer>
-    <strong>AURA TEXTIL</strong>
-    <p>Donde la Patagonia se convierte en arte.</p>
+  <footer class="footer">
+    <p>
+      © 2026 Aura Textil
+    </p>
+
+    <p>
+      Patagonia Chilena
+    </p>
   </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
