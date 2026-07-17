@@ -643,3 +643,351 @@ audio.addEventListener('ended', () => {
     crearIndicadorDeProgreso();
   }
 })();
+/* =====================================================
+   FASE 2C — PANTALLA FINAL DEL RECORRIDO
+===================================================== */
+
+(() => {
+  function crearPantallaFinal() {
+    const rutaActual = window.location.pathname.toLowerCase();
+
+    const esMartinPescador =
+      rutaActual.includes("martin-pescador");
+
+    if (!esMartinPescador) {
+      return;
+    }
+
+    if (document.querySelector("#pantalla-final-recorrido")) {
+      return;
+    }
+
+    const estilos = document.createElement("style");
+
+    estilos.id = "estilos-pantalla-final";
+
+    estilos.textContent = `
+      .pantalla-final-recorrido {
+        position: fixed;
+        inset: 0;
+        z-index: 20000;
+        display: grid;
+        place-items: center;
+        padding: 30px;
+        background:
+          linear-gradient(
+            rgba(4, 10, 6, 0.86),
+            rgba(4, 10, 6, 0.96)
+          ),
+          url("../carpintero-negro.jpg");
+
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.5s ease,
+          visibility 0.5s ease;
+      }
+
+      .pantalla-final-recorrido.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .pantalla-final-contenido {
+        width: min(850px, 100%);
+        text-align: center;
+        color: #ffffff;
+        transform: translateY(30px);
+        opacity: 0;
+        transition:
+          transform 0.7s cubic-bezier(.22, 1, .36, 1),
+          opacity 0.7s ease;
+      }
+
+      .pantalla-final-recorrido.visible
+      .pantalla-final-contenido {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .pantalla-final-etiqueta {
+        margin-bottom: 22px;
+        color: #c7e65b;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 2.2px;
+        text-transform: uppercase;
+      }
+
+      .pantalla-final-titulo {
+        max-width: 850px;
+        margin: 0 auto 28px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(50px, 8vw, 100px);
+        font-weight: 400;
+        line-height: 0.96;
+        letter-spacing: -4px;
+      }
+
+      .pantalla-final-texto {
+        max-width: 620px;
+        margin: 0 auto 42px;
+        color: rgba(255, 255, 255, 0.78);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 18px;
+        line-height: 1.7;
+      }
+
+      .pantalla-final-botones {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .pantalla-final-boton {
+        min-height: 52px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 24px;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        border-radius: 999px;
+        color: #ffffff;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition:
+          background 0.25s ease,
+          color 0.25s ease,
+          transform 0.25s ease;
+        cursor: pointer;
+      }
+
+      .pantalla-final-boton:hover {
+        background: rgba(255, 255, 255, 0.12);
+        transform: translateY(-2px);
+      }
+
+      .pantalla-final-boton.principal {
+        background: #f6f5ef;
+        border-color: #f6f5ef;
+        color: #071009;
+      }
+
+      .pantalla-final-boton.principal:hover {
+        background: #c7e65b;
+        border-color: #c7e65b;
+      }
+
+      .cerrar-pantalla-final {
+        position: absolute;
+        top: 24px;
+        right: 26px;
+        width: 48px;
+        height: 48px;
+        display: grid;
+        place-items: center;
+        background: rgba(7, 13, 9, 0.55);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 50%;
+        color: #ffffff;
+        font-size: 24px;
+        cursor: pointer;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+
+      body.pantalla-final-abierta {
+        overflow: hidden;
+      }
+
+      @media (max-width: 700px) {
+        .pantalla-final-recorrido {
+          padding: 26px 20px;
+          background-position: 60% center;
+        }
+
+        .pantalla-final-etiqueta {
+          font-size: 10px;
+          margin-bottom: 18px;
+        }
+
+        .pantalla-final-titulo {
+          font-size: 55px;
+          line-height: 0.95;
+          letter-spacing: -2.5px;
+          margin-bottom: 24px;
+        }
+
+        .pantalla-final-texto {
+          font-size: 15px;
+          line-height: 1.6;
+          margin-bottom: 32px;
+        }
+
+        .pantalla-final-botones {
+          flex-direction: column;
+        }
+
+        .pantalla-final-boton {
+          width: 100%;
+          max-width: 310px;
+        }
+
+        .cerrar-pantalla-final {
+          top: 17px;
+          right: 17px;
+          width: 44px;
+          height: 44px;
+        }
+      }
+    `;
+
+    document.head.appendChild(estilos);
+
+    const pantalla = document.createElement("section");
+
+    pantalla.id = "pantalla-final-recorrido";
+    pantalla.className = "pantalla-final-recorrido";
+    pantalla.setAttribute("aria-hidden", "true");
+
+    pantalla.innerHTML = `
+      <button
+        type="button"
+        class="cerrar-pantalla-final"
+        aria-label="Cerrar pantalla final"
+      >
+        ×
+      </button>
+
+      <div class="pantalla-final-contenido">
+
+        <p class="pantalla-final-etiqueta">
+          Recorrido completado · 6/6
+        </p>
+
+        <h2 class="pantalla-final-titulo">
+          Has completado el recorrido
+        </h2>
+
+        <p class="pantalla-final-texto">
+          Has conocido seis de los habitantes de la Patagonia.
+          Gracias por explorar esta experiencia fotográfica y sonora
+          creada por Aura Textil.
+        </p>
+
+        <div class="pantalla-final-botones">
+
+          <a
+            href="../"
+            class="pantalla-final-boton principal"
+          >
+            Volver a la colección
+          </a>
+
+          <a
+            href="../carpintero-negro/"
+            class="pantalla-final-boton"
+          >
+            Recorrer nuevamente
+          </a>
+
+          <a
+            href="https://www.instagram.com/_auratextil/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="pantalla-final-boton"
+          >
+            Ver Instagram
+          </a>
+
+        </div>
+
+      </div>
+    `;
+
+    document.body.appendChild(pantalla);
+
+    function abrirPantallaFinal() {
+      pantalla.classList.add("visible");
+      pantalla.setAttribute("aria-hidden", "false");
+      document.body.classList.add("pantalla-final-abierta");
+    }
+
+    function cerrarPantallaFinal() {
+      pantalla.classList.remove("visible");
+      pantalla.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("pantalla-final-abierta");
+    }
+
+    const botonCerrar =
+      pantalla.querySelector(".cerrar-pantalla-final");
+
+    botonCerrar.addEventListener(
+      "click",
+      cerrarPantallaFinal
+    );
+
+    pantalla.addEventListener("click", evento => {
+      if (evento.target === pantalla) {
+        cerrarPantallaFinal();
+      }
+    });
+
+    document.addEventListener("keydown", evento => {
+      if (evento.key === "Escape") {
+        cerrarPantallaFinal();
+      }
+    });
+
+    function conectarFlechaSiguiente() {
+      const flechaSiguiente =
+        document.querySelector(".navegacion-siguiente");
+
+      if (!flechaSiguiente) {
+        setTimeout(conectarFlechaSiguiente, 100);
+        return;
+      }
+
+      flechaSiguiente.href = "#final-recorrido";
+      flechaSiguiente.setAttribute(
+        "aria-label",
+        "Finalizar recorrido"
+      );
+
+      const texto =
+        flechaSiguiente.querySelector(".texto-especie");
+
+      if (texto) {
+        texto.textContent = "Finalizar recorrido";
+      }
+
+      flechaSiguiente.addEventListener(
+        "click",
+        evento => {
+          evento.preventDefault();
+          abrirPantallaFinal();
+        }
+      );
+    }
+
+    conectarFlechaSiguiente();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      crearPantallaFinal
+    );
+  } else {
+    crearPantallaFinal();
+  }
+})();
