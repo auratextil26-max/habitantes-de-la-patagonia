@@ -2284,11 +2284,11 @@ audio.addEventListener('ended', () => {
   }
 })();
 /* =====================================================
-   FASE 4.1 — EFECTO KEN BURNS EN LAS FOTOGRAFÍAS
+   FASE 4.1 — EFECTO KEN BURNS EN EL FONDO DEL HERO
 ===================================================== */
 
 (() => {
-  function iniciarEfectoKenBurns() {
+  function iniciarKenBurnsEnHero() {
     const rutaActual = window.location.pathname.toLowerCase();
 
     const esPaginaDeEspecie = [
@@ -2300,111 +2300,107 @@ audio.addEventListener('ended', () => {
       "martin-pescador"
     ].some(especie => rutaActual.includes(especie));
 
+    if (!esPaginaDeEspecie) {
+      return;
+    }
+
+    const hero = document.querySelector(".hero");
+
     if (
-      !esPaginaDeEspecie ||
-      document.querySelector("#estilos-ken-burns")
+      !hero ||
+      hero.querySelector(".ken-burns-fondo")
     ) {
       return;
     }
 
+    const estiloHero = window.getComputedStyle(hero);
+    const imagenDeFondo = estiloHero.backgroundImage;
+
+    if (!imagenDeFondo || imagenDeFondo === "none") {
+      return;
+    }
+
+    const capaFondo = document.createElement("div");
+
+    capaFondo.className = "ken-burns-fondo";
+    capaFondo.setAttribute("aria-hidden", "true");
+
+    capaFondo.style.backgroundImage = imagenDeFondo;
+    capaFondo.style.backgroundSize = estiloHero.backgroundSize;
+    capaFondo.style.backgroundPosition = estiloHero.backgroundPosition;
+    capaFondo.style.backgroundRepeat = estiloHero.backgroundRepeat;
+    capaFondo.style.backgroundColor = estiloHero.backgroundColor;
+
+    hero.style.backgroundImage = "none";
+    hero.style.position = "relative";
+    hero.style.overflow = "hidden";
+    hero.style.isolation = "isolate";
+
+    hero.prepend(capaFondo);
+
     const estilos = document.createElement("style");
 
-    estilos.id = "estilos-ken-burns";
+    estilos.id = "estilos-ken-burns-corregido";
 
     estilos.textContent = `
-      @keyframes kenBurnsAura {
-        0% {
-          transform: scale(1.01) translate3d(0, 0, 0);
-        }
-
-        50% {
-          transform: scale(1.065) translate3d(-0.6%, -0.4%, 0);
-        }
-
-        100% {
-          transform: scale(1.1) translate3d(0.5%, -0.8%, 0);
-        }
-      }
-
-      .ken-burns-aura {
-        animation: kenBurnsAura 22s ease-in-out infinite alternate;
+      .ken-burns-fondo {
+        position: absolute;
+        inset: -5%;
+        z-index: -1;
+        pointer-events: none;
         transform-origin: center center;
+        animation:
+          kenBurnsHeroAura 24s
+          cubic-bezier(.45, 0, .55, 1)
+          infinite alternate;
         will-change: transform;
         backface-visibility: hidden;
       }
 
+      .hero > *:not(.ken-burns-fondo) {
+        position: relative;
+        z-index: 1;
+      }
+
+      @keyframes kenBurnsHeroAura {
+        0% {
+          transform:
+            scale(1.01)
+            translate3d(0, 0, 0);
+        }
+
+        50% {
+          transform:
+            scale(1.065)
+            translate3d(-0.7%, -0.4%, 0);
+        }
+
+        100% {
+          transform:
+            scale(1.11)
+            translate3d(0.7%, -0.8%, 0);
+        }
+      }
+
       @media (max-width: 700px) {
-        .ken-burns-aura {
-          animation-duration: 26s;
+        .ken-burns-fondo {
+          inset: -7%;
+          animation-duration: 28s;
         }
       }
 
       @media (prefers-reduced-motion: reduce) {
-        .ken-burns-aura {
+        .ken-burns-fondo {
           animation: none !important;
-          transform: none !important;
+          transform: scale(1.03) !important;
         }
       }
     `;
 
     document.head.appendChild(estilos);
 
-    const imagenes = Array.from(
-      document.querySelectorAll("img")
-    ).filter(imagen => {
-      const src = (imagen.getAttribute("src") || "").toLowerCase();
-      const clase = imagen.className?.toString().toLowerCase() || "";
-
-      const esLogo =
-        src.includes("logo") ||
-        clase.includes("logo");
-
-      const estaDentroDePanel =
-        imagen.closest("#panel-educativo-especie") ||
-        imagen.closest("#transicion-cinematografica");
-
-      const esImagenPrincipal =
-        src.includes(".jpg") ||
-        src.includes(".jpeg") ||
-        src.includes(".webp") ||
-        src.includes(".png");
-
-      return (
-        esImagenPrincipal &&
-        !esLogo &&
-        !estaDentroDePanel
-      );
-    });
-
-    const imagenPrincipal =
-      imagenes.find(imagen => {
-        const rectangulo = imagen.getBoundingClientRect();
-
-        return (
-          rectangulo.width > window.innerWidth * 0.45 &&
-          rectangulo.height > window.innerHeight * 0.45
-        );
-      }) || imagenes[0];
-
-    if (!imagenPrincipal) {
-      return;
-    }
-
-    imagenPrincipal.classList.add("ken-burns-aura");
-
-    const contenedorImagen = imagenPrincipal.parentElement;
-
-    if (contenedorImagen) {
-      const estilosContenedor =
-        window.getComputedStyle(contenedorImagen);
-
-      if (estilosContenedor.overflow === "visible") {
-        contenedorImagen.style.overflow = "hidden";
-      }
-    }
-
     document.addEventListener("visibilitychange", () => {
-      imagenPrincipal.style.animationPlayState =
+      capaFondo.style.animationPlayState =
         document.hidden ? "paused" : "running";
     });
   }
@@ -2412,9 +2408,9 @@ audio.addEventListener('ended', () => {
   if (document.readyState === "loading") {
     document.addEventListener(
       "DOMContentLoaded",
-      iniciarEfectoKenBurns
+      iniciarKenBurnsEnHero
     );
   } else {
-    iniciarEfectoKenBurns();
+    iniciarKenBurnsEnHero();
   }
 })();
