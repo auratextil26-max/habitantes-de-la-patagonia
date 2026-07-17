@@ -338,3 +338,27 @@ header.topbar .edition {
     white-space: nowrap !important;
 }
 }
+/* =====================================================
+   FASE 4.1 — MOVIMIENTO CINEMATOGRÁFICO DEL HERO
+===================================================== */
+
+.hero::before {
+  transform-origin: center center;
+  animation: movimientoAuraHero 14s ease-in-out infinite alternate !important;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+@keyframes movimientoAuraHero {
+  0% {
+    transform: scale(1.01) translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: scale(1.08) translate3d(-0.7%, -0.4%, 0);
+  }
+
+  100% {
+    transform: scale(1.15) translate3d(0.8%, -0.9%, 0);
+  }
+}
