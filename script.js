@@ -469,3 +469,177 @@ audio.addEventListener('ended', () => {
     iniciarAnimacionesCinematograficas();
   }
 })();
+/* =====================================================
+   FASE 2B — INDICADOR DE PROGRESO
+===================================================== */
+
+(() => {
+  function crearIndicadorDeProgreso() {
+    const especies = [
+      {
+        carpeta: "carpintero-negro",
+        numero: 1,
+        nombre: "Carpintero Negro"
+      },
+      {
+        carpeta: "puma",
+        numero: 2,
+        nombre: "Puma"
+      },
+      {
+        carpeta: "flamenco",
+        numero: 3,
+        nombre: "Flamenco Chileno"
+      },
+      {
+        carpeta: "condor",
+        numero: 4,
+        nombre: "Cóndor Andino"
+      },
+      {
+        carpeta: "guanaco",
+        numero: 5,
+        nombre: "Guanaco"
+      },
+      {
+        carpeta: "martin-pescador",
+        numero: 6,
+        nombre: "Martín Pescador"
+      }
+    ];
+
+    const rutaActual = window.location.pathname.toLowerCase();
+
+    const especieActual = especies.find(especie =>
+      rutaActual.includes(especie.carpeta)
+    );
+
+    if (
+      !especieActual ||
+      document.querySelector(".indicador-progreso")
+    ) {
+      return;
+    }
+
+    const estilos = document.createElement("style");
+
+    estilos.id = "estilos-indicador-progreso";
+
+    estilos.textContent = `
+      .indicador-progreso {
+        position: fixed;
+        top: 24px;
+        right: 28px;
+        z-index: 9998;
+        min-width: 150px;
+        padding: 12px 16px;
+        background: rgba(7, 13, 9, 0.72);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 999px;
+        color: #ffffff;
+        font-family: Arial, Helvetica, sans-serif;
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.28);
+      }
+
+      .indicador-progreso-texto {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        margin-bottom: 8px;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+      }
+
+      .indicador-progreso-texto strong {
+        color: #c7e65b;
+        font-size: 11px;
+      }
+
+      .barra-progreso {
+        width: 100%;
+        height: 3px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.16);
+        border-radius: 999px;
+      }
+
+      .barra-progreso span {
+        display: block;
+        width: ${especieActual.numero / especies.length * 100}%;
+        height: 100%;
+        background: #c7e65b;
+        border-radius: 999px;
+        transform-origin: left center;
+        animation: cargarProgreso 1.1s ease 0.8s both;
+      }
+
+      @keyframes cargarProgreso {
+        from {
+          transform: scaleX(0);
+        }
+
+        to {
+          transform: scaleX(1);
+        }
+      }
+
+      @media (max-width: 700px) {
+        .indicador-progreso {
+          top: 18px;
+          right: 16px;
+          min-width: 126px;
+          padding: 10px 13px;
+        }
+
+        .indicador-progreso-texto {
+          font-size: 9px;
+          margin-bottom: 6px;
+        }
+
+        .indicador-progreso-texto strong {
+          font-size: 10px;
+        }
+      }
+    `;
+
+    document.head.appendChild(estilos);
+
+    const indicador = document.createElement("div");
+
+    indicador.className = "indicador-progreso";
+
+    indicador.setAttribute(
+      "aria-label",
+      `${especieActual.numero} de ${especies.length} especies`
+    );
+
+    indicador.innerHTML = `
+      <div class="indicador-progreso-texto">
+        <span>Explorando</span>
+        <strong>
+          ${especieActual.numero}/${especies.length}
+        </strong>
+      </div>
+
+      <div class="barra-progreso">
+        <span></span>
+      </div>
+    `;
+
+    document.body.appendChild(indicador);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      crearIndicadorDeProgreso
+    );
+  } else {
+    crearIndicadorDeProgreso();
+  }
+})();
