@@ -1669,3 +1669,617 @@ audio.addEventListener('ended', () => {
     crearPanelCarpinteroNegro();
   }
 })();
+/* =====================================================
+   FASE 3B — INFORMACIÓN Y COLOR DINÁMICO POR ESPECIE
+===================================================== */
+
+(() => {
+  function iniciarFichasDeEspecies() {
+    const rutaActual = window.location.pathname.toLowerCase();
+
+    const especies = {
+      "carpintero-negro": {
+        codigo: "PS—001",
+        nombre: "Carpintero Negro",
+        cientifico: "Campephilus magellanicus",
+        color: "#c7e65b",
+        colorTexto: "#071009",
+        introduccion:
+          "Una de las aves más características de los bosques templados del extremo sur de Sudamérica. Su presencia está estrechamente relacionada con bosques nativos que conservan árboles grandes y maduros.",
+        habitat:
+          "Bosques nativos templados, especialmente formaciones de coigüe, lenga, ñirre y otras especies australes.",
+        alimentacion:
+          "Larvas, insectos, arañas y pequeños organismos que encuentra bajo la corteza y dentro de la madera.",
+        distribucion:
+          "Habita en los bosques australes de Chile y Argentina, incluyendo sectores de la Patagonia y Tierra del Fuego.",
+        conservacion:
+          "La conservación de los bosques nativos antiguos es fundamental para mantener sus lugares de alimentación, descanso y reproducción.",
+        destacadoTitulo: "Importancia ecológica",
+        destacado:
+          "Las cavidades que excava pueden ser utilizadas posteriormente por otras aves y pequeños habitantes del bosque."
+      },
+
+      puma: {
+        codigo: "PS—002",
+        nombre: "Puma",
+        cientifico: "Puma concolor",
+        color: "#c98652",
+        colorTexto: "#160c06",
+        introduccion:
+          "El puma es el felino terrestre más grande de Chile y uno de los principales depredadores de la Patagonia. Es silencioso, adaptable y fundamental para el equilibrio natural.",
+        habitat:
+          "Habita montañas, bosques, estepas, matorrales y sectores rocosos, adaptándose a una amplia variedad de paisajes.",
+        alimentacion:
+          "Se alimenta principalmente de mamíferos y aves. En la Patagonia, el guanaco constituye una de sus presas naturales más importantes.",
+        distribucion:
+          "Posee una extensa distribución en América. En Chile puede encontrarse desde el norte hasta los territorios australes.",
+        conservacion:
+          "Sus principales amenazas incluyen la pérdida y fragmentación del hábitat y los conflictos generados por la cercanía con actividades humanas.",
+        destacadoTitulo: "Equilibrio natural",
+        destacado:
+          "Como gran depredador, ayuda a regular las poblaciones de otras especies y contribuye al funcionamiento saludable de los ecosistemas."
+      },
+
+      flamenco: {
+        codigo: "PS—003",
+        nombre: "Flamenco Chileno",
+        cientifico: "Phoenicopterus chilensis",
+        color: "#ee9cab",
+        colorTexto: "#25090f",
+        introduccion:
+          "El flamenco chileno destaca por su elegante figura, su coloración rosada y sus extensos desplazamientos entre lagunas, salares y humedales.",
+        habitat:
+          "Lagunas poco profundas, humedales, estuarios, salares y ambientes acuáticos donde puede encontrar alimento.",
+        alimentacion:
+          "Filtra pequeños crustáceos, algas y organismos acuáticos utilizando su característico pico curvado.",
+        distribucion:
+          "Se distribuye por diferentes zonas de Sudamérica. En la Patagonia puede observarse en lagunas y humedales australes.",
+        conservacion:
+          "La alteración de humedales, la contaminación y la perturbación de sus zonas de descanso y reproducción pueden afectar sus poblaciones.",
+        destacadoTitulo: "Su color rosado",
+        destacado:
+          "Su coloración se relaciona con los pigmentos presentes en los pequeños organismos que forman parte de su alimentación."
+      },
+
+      condor: {
+        codigo: "PS—004",
+        nombre: "Cóndor Andino",
+        cientifico: "Vultur gryphus",
+        color: "#b9bec4",
+        colorTexto: "#080a0c",
+        introduccion:
+          "El cóndor andino es una de las aves voladoras más grandes del mundo y un símbolo cultural profundamente ligado a la cordillera y a la Patagonia.",
+        habitat:
+          "Zonas montañosas, acantilados, estepas abiertas y sectores donde existen corrientes de aire que facilitan su vuelo.",
+        alimentacion:
+          "Es un ave carroñera. Se alimenta de animales muertos y cumple una importante función de limpieza natural.",
+        distribucion:
+          "Se encuentra a lo largo de la cordillera de los Andes, desde el norte de Sudamérica hasta Tierra del Fuego.",
+        conservacion:
+          "Entre sus amenazas se encuentran el envenenamiento, la persecución, la disminución de alimento y la alteración de sus áreas de descanso.",
+        destacadoTitulo: "Vuelo extraordinario",
+        destacado:
+          "Puede recorrer grandes distancias aprovechando las corrientes de aire y mantenerse planeando con un mínimo gasto de energía."
+      },
+
+      guanaco: {
+        codigo: "PS—005",
+        nombre: "Guanaco",
+        cientifico: "Lama guanicoe",
+        color: "#d7a86e",
+        colorTexto: "#1b0f05",
+        introduccion:
+          "El guanaco es uno de los animales más representativos de la estepa patagónica. Vive en grupos y posee una gran capacidad para adaptarse a ambientes fríos y ventosos.",
+        habitat:
+          "Estepas, pampas, matorrales y sectores abiertos, desde terrenos bajos hasta ambientes cordilleranos.",
+        alimentacion:
+          "Es herbívoro y consume pastos, hierbas, hojas y arbustos disponibles en el paisaje patagónico.",
+        distribucion:
+          "Habita diferentes regiones de Sudamérica. En Chile posee una presencia especialmente importante en la Patagonia.",
+        conservacion:
+          "La protección de sus rutas naturales, áreas de alimentación y ambientes abiertos es importante para conservar poblaciones saludables.",
+        destacadoTitulo: "Adaptación patagónica",
+        destacado:
+          "Su pelaje, su resistencia y su forma de aprovechar la vegetación le permiten sobrevivir en paisajes expuestos a bajas temperaturas y fuertes vientos."
+      },
+
+      "martin-pescador": {
+        codigo: "PS—006",
+        nombre: "Martín Pescador Grande",
+        cientifico: "Megaceryle torquata",
+        color: "#45a9c8",
+        colorTexto: "#031116",
+        introduccion:
+          "El martín pescador grande es una llamativa ave de ríos, lagos y costas. Suele observar el agua desde una rama antes de lanzarse rápidamente para capturar su alimento.",
+        habitat:
+          "Ríos, lagunas, lagos, estuarios y sectores costeros que cuentan con agua y lugares elevados para posarse.",
+        alimentacion:
+          "Se alimenta principalmente de peces, aunque también puede capturar crustáceos y otros pequeños animales acuáticos.",
+        distribucion:
+          "Se distribuye ampliamente por América. En Chile puede observarse en diferentes ambientes acuáticos, incluyendo la Patagonia.",
+        conservacion:
+          "La calidad del agua y la conservación de la vegetación cercana a ríos y lagos son importantes para mantener su hábitat.",
+        destacadoTitulo: "Cazador del agua",
+        destacado:
+          "Detecta a sus presas desde una posición elevada y se lanza de cabeza al agua con gran precisión."
+      }
+    };
+
+    const claveActual = Object.keys(especies).find(clave =>
+      rutaActual.includes(clave)
+    );
+
+    if (!claveActual) {
+      return;
+    }
+
+    const especie = especies[claveActual];
+
+    document.documentElement.style.setProperty(
+      "--color-especie",
+      especie.color
+    );
+
+    document.documentElement.style.setProperty(
+      "--texto-color-especie",
+      especie.colorTexto
+    );
+
+    const estilosAnteriores =
+      document.querySelector("#estilos-panel-educativo");
+
+    if (estilosAnteriores) {
+      estilosAnteriores.remove();
+    }
+
+    const panelAnterior =
+      document.querySelector("#panel-educativo-especie");
+
+    if (panelAnterior) {
+      panelAnterior.remove();
+    }
+
+    const botonAnterior =
+      document.querySelector(".boton-conocer-especie");
+
+    if (botonAnterior) {
+      botonAnterior.remove();
+    }
+
+    const estilos = document.createElement("style");
+
+    estilos.id = "estilos-panel-educativo";
+
+    estilos.textContent = `
+      :root {
+        --color-especie: #c7e65b;
+        --texto-color-especie: #071009;
+      }
+
+      .transicion-linea::after {
+        background: var(--color-especie) !important;
+      }
+
+      .boton-conocer-especie {
+        position: fixed;
+        left: 28px;
+        bottom: 92px;
+        z-index: 9997;
+        min-height: 48px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 13px 20px;
+        background: rgba(7, 13, 9, 0.84);
+        border: 1px solid color-mix(
+          in srgb,
+          var(--color-especie) 55%,
+          transparent
+        );
+        border-radius: 999px;
+        color: #ffffff;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        box-shadow: 0 14px 38px rgba(0, 0, 0, 0.3);
+        transition:
+          background 0.25s ease,
+          color 0.25s ease,
+          border-color 0.25s ease,
+          transform 0.25s ease;
+      }
+
+      .boton-conocer-especie:hover {
+        background: var(--color-especie);
+        border-color: var(--color-especie);
+        color: var(--texto-color-especie);
+        transform: translateY(-2px);
+      }
+
+      .boton-conocer-especie span {
+        color: var(--color-especie);
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 1;
+      }
+
+      .boton-conocer-especie:hover span {
+        color: var(--texto-color-especie);
+      }
+
+      .panel-educativo-especie {
+        position: fixed;
+        inset: 0;
+        z-index: 40000;
+        display: flex;
+        align-items: stretch;
+        justify-content: flex-end;
+        background: rgba(2, 7, 4, 0);
+        visibility: hidden;
+        transition:
+          background 0.45s ease,
+          visibility 0.45s ease;
+      }
+
+      .panel-educativo-especie.visible {
+        background: rgba(2, 7, 4, 0.74);
+        visibility: visible;
+      }
+
+      .panel-educativo-contenido {
+        position: relative;
+        width: min(620px, 100%);
+        height: 100%;
+        overflow-y: auto;
+        padding: 76px 52px 52px;
+        background:
+          radial-gradient(
+            circle at top right,
+            color-mix(
+              in srgb,
+              var(--color-especie) 17%,
+              transparent
+            ),
+            transparent 38%
+          ),
+          linear-gradient(
+            145deg,
+            rgba(20, 31, 23, 0.99),
+            rgba(6, 13, 8, 0.99)
+          );
+        border-left: 1px solid rgba(255, 255, 255, 0.14);
+        color: #ffffff;
+        transform: translateX(100%);
+        transition:
+          transform 0.65s cubic-bezier(.22, 1, .36, 1);
+        box-shadow: -30px 0 80px rgba(0, 0, 0, 0.4);
+      }
+
+      .panel-educativo-especie.visible
+      .panel-educativo-contenido {
+        transform: translateX(0);
+      }
+
+      .cerrar-panel-educativo {
+        position: absolute;
+        top: 22px;
+        right: 24px;
+        width: 46px;
+        height: 46px;
+        display: grid;
+        place-items: center;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        color: #ffffff;
+        font-size: 24px;
+        line-height: 1;
+        cursor: pointer;
+        transition:
+          background 0.25s ease,
+          border-color 0.25s ease,
+          transform 0.25s ease;
+      }
+
+      .cerrar-panel-educativo:hover {
+        background: var(--color-especie);
+        border-color: var(--color-especie);
+        color: var(--texto-color-especie);
+        transform: rotate(90deg);
+      }
+
+      .panel-etiqueta {
+        margin-bottom: 18px;
+        color: var(--color-especie);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      .panel-titulo {
+        margin-bottom: 10px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(44px, 6vw, 68px);
+        font-weight: 400;
+        line-height: 0.98;
+        letter-spacing: -2.5px;
+      }
+
+      .panel-cientifico {
+        margin-bottom: 40px;
+        color: rgba(255, 255, 255, 0.6);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        font-style: italic;
+      }
+
+      .panel-introduccion {
+        margin-bottom: 42px;
+        color: rgba(255, 255, 255, 0.78);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        line-height: 1.75;
+      }
+
+      .datos-especie {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1px;
+        overflow: hidden;
+        margin-bottom: 34px;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 18px;
+      }
+
+      .dato-especie {
+        min-height: 160px;
+        padding: 25px;
+        background: rgba(8, 18, 11, 0.92);
+      }
+
+      .dato-icono {
+        display: block;
+        margin-bottom: 18px;
+        color: var(--color-especie);
+        font-size: 22px;
+      }
+
+      .dato-especie h3 {
+        margin-bottom: 10px;
+        color: rgba(255, 255, 255, 0.55);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+
+      .dato-especie p {
+        color: #ffffff;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .dato-destacado {
+        padding: 28px;
+        background: var(--color-especie);
+        border-radius: 18px;
+        color: var(--texto-color-especie);
+      }
+
+      .dato-destacado span {
+        display: block;
+        margin-bottom: 12px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 1.6px;
+        text-transform: uppercase;
+      }
+
+      .dato-destacado p {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 23px;
+        line-height: 1.35;
+      }
+
+      body.panel-educativo-abierto {
+        overflow: hidden;
+      }
+
+      @media (max-width: 700px) {
+        .boton-conocer-especie {
+          left: 50%;
+          bottom: 82px;
+          width: max-content;
+          min-height: 42px;
+          padding: 10px 17px;
+          font-size: 9px;
+          transform: translateX(-50%);
+        }
+
+        .boton-conocer-especie:hover {
+          transform: translateX(-50%) translateY(-2px);
+        }
+
+        .panel-educativo-contenido {
+          width: 100%;
+          padding: 74px 20px 120px;
+          border-left: none;
+        }
+
+        .panel-titulo {
+          font-size: 48px;
+          letter-spacing: -2px;
+        }
+
+        .panel-cientifico {
+          margin-bottom: 28px;
+          font-size: 15px;
+        }
+
+        .panel-introduccion {
+          margin-bottom: 30px;
+          font-size: 15px;
+        }
+
+        .datos-especie {
+          grid-template-columns: 1fr;
+        }
+
+        .dato-especie {
+          min-height: auto;
+          padding: 23px;
+        }
+
+        .dato-destacado p {
+          font-size: 21px;
+        }
+      }
+    `;
+
+    document.head.appendChild(estilos);
+
+    const boton = document.createElement("button");
+
+    boton.type = "button";
+    boton.className = "boton-conocer-especie";
+    boton.setAttribute(
+      "aria-label",
+      `Conocer información de ${especie.nombre}`
+    );
+
+    boton.innerHTML = `
+      Conocer la especie
+      <span>+</span>
+    `;
+
+    const panel = document.createElement("aside");
+
+    panel.id = "panel-educativo-especie";
+    panel.className = "panel-educativo-especie";
+    panel.setAttribute("aria-hidden", "true");
+
+    panel.innerHTML = `
+      <div
+        class="panel-educativo-contenido"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="titulo-panel-especie"
+      >
+        <button
+          type="button"
+          class="cerrar-panel-educativo"
+          aria-label="Cerrar información"
+        >
+          ×
+        </button>
+
+        <p class="panel-etiqueta">
+          ${especie.codigo} · Ficha de la especie
+        </p>
+
+        <h2
+          class="panel-titulo"
+          id="titulo-panel-especie"
+        >
+          ${especie.nombre}
+        </h2>
+
+        <p class="panel-cientifico">
+          ${especie.cientifico}
+        </p>
+
+        <p class="panel-introduccion">
+          ${especie.introduccion}
+        </p>
+
+        <div class="datos-especie">
+          <article class="dato-especie">
+            <span class="dato-icono">⌂</span>
+            <h3>Hábitat</h3>
+            <p>${especie.habitat}</p>
+          </article>
+
+          <article class="dato-especie">
+            <span class="dato-icono">◌</span>
+            <h3>Alimentación</h3>
+            <p>${especie.alimentacion}</p>
+          </article>
+
+          <article class="dato-especie">
+            <span class="dato-icono">⌖</span>
+            <h3>Distribución</h3>
+            <p>${especie.distribucion}</p>
+          </article>
+
+          <article class="dato-especie">
+            <span class="dato-icono">◇</span>
+            <h3>Conservación</h3>
+            <p>${especie.conservacion}</p>
+          </article>
+        </div>
+
+        <div class="dato-destacado">
+          <span>${especie.destacadoTitulo}</span>
+          <p>${especie.destacado}</p>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(boton);
+    document.body.appendChild(panel);
+
+    const botonCerrar =
+      panel.querySelector(".cerrar-panel-educativo");
+
+    function abrirPanel() {
+      panel.classList.add("visible");
+      panel.setAttribute("aria-hidden", "false");
+      document.body.classList.add("panel-educativo-abierto");
+    }
+
+    function cerrarPanel() {
+      panel.classList.remove("visible");
+      panel.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("panel-educativo-abierto");
+    }
+
+    boton.addEventListener("click", abrirPanel);
+    botonCerrar.addEventListener("click", cerrarPanel);
+
+    panel.addEventListener("click", evento => {
+      if (evento.target === panel) {
+        cerrarPanel();
+      }
+    });
+
+    document.addEventListener("keydown", evento => {
+      if (
+        evento.key === "Escape" &&
+        panel.classList.contains("visible")
+      ) {
+        cerrarPanel();
+      }
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      iniciarFichasDeEspecies
+    );
+  } else {
+    iniciarFichasDeEspecies();
+  }
+})();
