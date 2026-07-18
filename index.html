@@ -846,10 +846,43 @@
     botonHero.addEventListener("click", function (evento) {
       evento.preventDefault();
 
-      seccionEspecies.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
+      const inicio = window.scrollY;
+      const destino =
+        seccionEspecies.getBoundingClientRect().top +
+        window.scrollY -
+        70;
+
+      const distancia = destino - inicio;
+      const duracion = 1600;
+      let tiempoInicial = null;
+
+      function suavizar(progreso) {
+        return progreso < 0.5
+          ? 4 * progreso * progreso * progreso
+          : 1 - Math.pow(-2 * progreso + 2, 3) / 2;
+      }
+
+      function animar(tiempoActual) {
+        if (tiempoInicial === null) {
+          tiempoInicial = tiempoActual;
+        }
+
+        const progreso = Math.min(
+          (tiempoActual - tiempoInicial) / duracion,
+          1
+        );
+
+        window.scrollTo(
+          0,
+          inicio + distancia * suavizar(progreso)
+        );
+
+        if (progreso < 1) {
+          requestAnimationFrame(animar);
+        }
+      }
+
+      requestAnimationFrame(animar);
     });
   }
 </script>
