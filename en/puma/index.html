@@ -1,1 +1,196 @@
+<!doctype html>
+<html lang="es">
 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b100d">
+  <meta
+    name="description"
+    content="Sonidos de la Patagonia de Aura Textil: conoce y escucha al Puma."
+  >
+
+  <title>Puma | Aura Textil</title>
+
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    .hero::before {
+      background:
+        linear-gradient(
+          to top,
+          rgba(4, 7, 5, 0.72) 2%,
+          rgba(4, 7, 5, 0.08) 55%,
+          rgba(4, 7, 5, 0.02)
+        ),
+        url("puma.jpg") center center / contain no-repeat !important;
+
+      background-color: #0b100d !important;
+    }
+
+    @media (max-width: 899px) {
+      .hero::before {
+        background:
+          linear-gradient(
+            to bottom,
+            rgba(4, 7, 5, 0.02) 20%,
+            rgba(4, 7, 5, 0.12) 70%,
+            #0b100d 100%
+          ),
+          url("puma.jpg") center top / contain no-repeat !important;
+
+        background-color: #0b100d !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <img src="../logo.png" alt="Aura Textil" class="logo">
+    <div class="edition">PS–002</div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="hero-content">
+
+        <p class="eyebrow">ESCANEA. ESCUCHA. DESCUBRE.</p>
+
+        <h1>Puma</h1>
+
+        <p class="scientific">
+          <em>Puma concolor</em>
+        </p>
+
+        <button
+          id="playBtn"
+          type="button"
+          aria-label="Reproducir sonido del Puma"
+        >
+          ▶ Escuchar su sonido
+        </button>
+
+        <audio id="audio" preload="metadata">
+          <source src="puma.mp3" type="audio/mpeg">
+          Tu navegador no permite reproducir audio.
+        </audio>
+
+      </div>
+
+      <div class="photo-credit">
+        Fotografía: @foto_faunachile
+      </div>
+    </section>
+
+    <section class="section">
+
+      <p class="kicker">EL GUARDIÁN DE LA ESTEPA</p>
+
+      <h2>
+        Una presencia silenciosa que sostiene el equilibrio patagónico.
+      </h2>
+
+      <p>
+        El puma es el mayor felino de la Patagonia y uno de los depredadores
+        más emblemáticos de Sudamérica. Silencioso, ágil y adaptable, habita
+        montañas, estepas y bosques.
+      </p>
+
+      <p>
+        Durante sus primeros meses de vida, las crías permanecen junto a su
+        madre, aprendiendo a observar, desplazarse, cazar y reconocer su
+        territorio.
+      </p>
+
+    </section>
+
+    <section class="facts">
+
+      <article>
+        <span>01</span>
+        <h3>Gran felino</h3>
+        <p>Es el carnívoro terrestre más grande que habita en Chile.</p>
+      </article>
+
+      <article>
+        <span>02</span>
+        <h3>Amplia distribución</h3>
+        <p>Habita estepas, bosques, montañas y zonas de matorral.</p>
+      </article>
+
+      <article>
+        <span>03</span>
+        <h3>Crías manchadas</h3>
+        <p>Las crías nacen con manchas que desaparecen mientras crecen.</p>
+      </article>
+
+      <article>
+        <span>04</span>
+        <h3>Vida silenciosa</h3>
+        <p>Es territorial y generalmente solitario.</p>
+      </article>
+
+    </section>
+
+    <section class="section">
+
+      <p class="kicker">CONSERVACIÓN</p>
+
+      <h2>
+        Proteger al puma es conservar el equilibrio natural de la Patagonia.
+      </h2>
+
+      <p>
+        La pérdida de hábitat y la persecución humana son algunas de las
+        amenazas que enfrenta. Conservar los paisajes donde vive permite
+        proteger también a muchas otras especies patagónicas.
+      </p>
+
+    </section>
+
+    <section class="section credits">
+
+      <p class="kicker">CRÉDITOS</p>
+
+      <div class="row">
+        <span>Fotografía</span>
+        <strong>@foto_faunachile</strong>
+      </div>
+
+      <div class="row">
+        <span>Experiencia y diseño</span>
+        <strong>Aura Textil</strong>
+      </div>
+
+      <div class="row">
+        <span>Colección</span>
+        <strong>Sonidos de la Patagonia · PS–002</strong>
+      </div>
+
+    </section>
+
+    <section class="section purpose">
+
+      <p class="kicker">NUESTRO PROPÓSITO</p>
+
+      <p class="purpose-text">
+        En Aura Textil creemos que cada fotografía cuenta una historia y que
+        cada especie merece ser conocida y protegida.
+      </p>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <strong>AURA TEXTIL</strong>
+    <p>Donde la Patagonia se convierte en arte.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+
+</body>
+</html>
