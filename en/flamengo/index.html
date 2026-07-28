@@ -1,1 +1,74 @@
-
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b100d">
+<meta name="description" content="Sounds of Patagonia by Aura Textil: discover and listen to the Chilean flamingo.">
+<title>Chilean Flamingo | Aura Textil</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>
+.hero::before{
+background:
+linear-gradient(to top,rgba(4,7,5,.72)2%,rgba(4,7,5,.08)55%,rgba(4,7,5,.02)),
+url("https://auratextil26-max.github.io/habitantes-de-la-patagonia/flamenco/flamenco.jpg") center center/contain no-repeat!important;
+background-color:#0b100d!important}
+@media(max-width:899px){
+.hero::before{
+background:
+linear-gradient(to bottom,rgba(4,7,5,.02)20%,rgba(4,7,5,.12)70%,#0b100d 100%),
+url("https://auratextil26-max.github.io/habitantes-de-la-patagonia/flamenco/flamenco.jpg") center top/contain no-repeat!important;
+background-color:#0b100d!important}
+.hero-content{padding-bottom:calc(120px + env(safe-area-inset-bottom))!important}}
+</style>
+</head>
+<body>
+<header class="topbar">
+<img src="../../logo.png" alt="Aura Textil" class="logo">
+<div class="edition">PS–003</div>
+</header>
+<main>
+<section class="hero"><div class="hero-content">
+<p class="eyebrow">SCAN. LISTEN. DISCOVER.</p>
+<h1>Chilean<br>Flamingo</h1>
+<p class="scientific"><em>Phoenicopterus chilensis</em></p>
+<button id="playBtn" type="button" aria-label="Play the Chilean flamingo's call">🔊 Listen to the Chilean flamingo</button>
+<audio id="audio" preload="metadata">
+<source src="../../flamenco/flamenco.mp3" type="audio/mpeg">
+Your browser does not support audio playback.
+</audio>
+</div>
+<div class="photo-credit">Photography: @foto_faunachile</div>
+</section>
+<section class="section">
+<p class="kicker">THE PINK ICON OF PATAGONIA</p>
+<h2>A graceful silhouette that brings color to Patagonia's wetlands.</h2>
+<p>The Chilean flamingo inhabits lagoons, salt flats and wetlands throughout South America. Its pink plumage, long legs and distinctive curved bill make it one of Patagonia's most recognizable birds.</p>
+<p>It feeds by filtering tiny organisms from water and mud. Its survival depends on healthy wetlands where it can feed, rest and breed.</p>
+</section>
+<section class="facts">
+<article><span>01</span><h3>Pink plumage</h3><p>Its coloration comes from natural pigments found in its diet.</p></article>
+<article><span>02</span><h3>Specialized bill</h3><p>Its curved bill filters food from shallow water and mud.</p></article>
+<article><span>03</span><h3>Social species</h3><p>It usually gathers in large flocks across lagoons, salt flats and wetlands.</p></article>
+<article><span>04</span><h3>Long migrations</h3><p>It can travel great distances in search of food and suitable habitat.</p></article>
+</section>
+<section class="section">
+<p class="kicker">CONSERVATION</p>
+<h2>Protecting wetlands means protecting the future of the Chilean flamingo.</h2>
+<p>The degradation of lagoons, salt flats and feeding areas directly affects its populations. Conserving these ecosystems also protects countless other species that depend on water.</p>
+</section>
+<section class="section credits">
+<p class="kicker">CREDITS</p>
+<div class="row"><span>Photography</span><strong>@foto_faunachile</strong></div>
+<div class="row"><span>Experience and design</span><strong>Aura Textil</strong></div>
+<div class="row"><span>Collection</span><strong>Sounds of Patagonia · PS–003</strong></div>
+</section>
+<section class="section purpose">
+<p class="kicker">OUR PURPOSE</p>
+<p class="purpose-text">At Aura Textil, we believe every photograph tells a story and every species deserves to be known, appreciated and protected.</p>
+</section>
+</main>
+<footer><strong>AURA TEXTIL</strong><p>Where Patagonia becomes art.</p></footer>
+<script src="../../script.js"></script>
+</body>
+</html>
