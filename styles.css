@@ -4,7 +4,7 @@
   --text: #f4f0e8;
   --muted: #b7b9b4;
   --accent: #a8b86f;
-  --line: rgba(255,255,255,.14);
+  --line: rgba(255, 255, 255, 0.14);
 }
 
 * {
@@ -18,13 +18,17 @@ html {
 
 body {
   margin: 0;
+  overflow-x: hidden;
+  padding-bottom: calc(120px + env(safe-area-inset-bottom));
   background: var(--bg);
   color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
-  overflow-x: hidden;
-  padding-bottom: calc(120px + env(safe-area-inset-bottom));
 }
+
+/* =====================================================
+   BARRA SUPERIOR
+===================================================== */
 
 .topbar {
   position: absolute;
@@ -39,146 +43,297 @@ body {
 }
 
 .brand {
+  font-size: 0.82rem;
   font-weight: 700;
-  letter-spacing: .16em;
-  font-size: .82rem;
+  letter-spacing: 0.16em;
 }
+
 .subbrand {
-  color: var(--muted);
-  font-size: .58rem;
-  letter-spacing: .18em;
   margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
 }
 
 .edition {
+  padding: 6px 10px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  padding: 6px 10px;
-  font-size: .7rem;
-  letter-spacing: .12em;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
 }
 
+.logo {
+  display: block;
+  width: 110px;
+  max-width: 110px;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* =====================================================
+   HERO
+   Cada especie define su propia fotografía en su index.html
+===================================================== */
+
 .hero {
-  min-height: 100vh;
   position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
+  background: var(--bg);
 }
 
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-
-  background:
-    linear-gradient(
-      to top,
-      rgba(4,7,5,.98) 2%,
-      rgba(4,7,5,.35) 55%,
-      rgba(4,7,5,.08) 100%
-    );
-
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain;
+  z-index: 0;
   background-color: #0b100d;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: contain;
+  transform-origin: center center;
+  animation: movimientoAuraHero 14s ease-in-out infinite alternate;
+  will-change: transform;
+  backface-visibility: hidden;
 }
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  padding: 0 24px 58px;
+}
+
+.photo-credit {
+  position: absolute;
+  right: 18px;
+  bottom: 16px;
+  z-index: 3;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.7rem;
+}
+
+/* =====================================================
+   TIPOGRAFÍA
+===================================================== */
+
+.eyebrow,
+.kicker {
+  color: #c8d66b;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+h1,
+h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1;
+}
+
+h1 {
+  color: #ffffff;
+  font-size: clamp(3.6rem, 5.8vw, 6rem);
+}
+
+h2 {
+  margin: 12px 0 28px;
+  font-size: clamp(2.4rem, 9vw, 4.8rem);
+}
+
+.scientific {
+  margin: 16px 0 26px;
+  color: #d7d7d7;
+}
+
+/* =====================================================
+   BOTÓN DE AUDIO
+===================================================== */
+
+button,
+#playBtn {
+  width: auto;
+  min-width: 0;
+  height: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 22px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--text);
+  color: #111;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+button.playing,
+#playBtn.playing {
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  50% {
+    box-shadow: 0 0 0 14px rgba(244, 240, 232, 0);
+  }
+}
+
+/* =====================================================
+   SECCIONES
+===================================================== */
+
+.section {
+  max-width: 920px;
+  margin: auto;
+  padding: 76px 24px;
+}
+
+.section p {
+  color: var(--muted);
+  font-size: 1.03rem;
+}
+
+.facts {
+  display: grid;
+  gap: 1px;
+  padding: 1px;
+  background: var(--line);
+}
+
+.facts article {
+  padding: 32px 24px;
+  background: var(--panel);
+}
+
+.facts span {
+  color: var(--accent);
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+}
+
+.facts h3 {
+  margin: 14px 0 6px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.row span {
+  color: var(--muted);
+}
+
+.purpose {
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+.purpose-text {
+  color: var(--text) !important;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.8rem, 6vw, 3rem) !important;
+  line-height: 1.2;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+  padding: 50px 24px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  text-align: center;
+}
+
+/* =====================================================
+   ESCRITORIO
+===================================================== */
+
 @media (min-width: 900px) {
+  .topbar {
+    padding: 36px;
+  }
+
+  header.topbar > img.logo {
+    position: static;
+    width: 220px;
+    min-width: 220px;
+    max-width: 220px;
+    max-height: 220px;
+    margin: 0;
+    padding: 0;
+    object-fit: contain;
+    flex: 0 0 220px;
+    z-index: 9999;
+  }
 
   .hero::before {
     left: 36%;
     width: 64%;
-
-    background:
-      linear-gradient(
-        to top,
-        rgba(4,7,5,.72) 2%,
-        rgba(4,7,5,.08) 55%,
-        rgba(4,7,5,.02) 100%
-      );
-
-    background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
-    background-color: #0b100d;
   }
 
   .hero-content {
     width: 36%;
     max-width: 36%;
-    box-sizing: border-box;
-    padding: 60px 18px 74px 48px;
+    padding: 0 18px 74px 48px;
   }
 
   .hero-content h1 {
-    font-size: clamp(3rem,5vw,5rem);
-    line-height: .92;
     margin: 0;
+    font-size: clamp(3rem, 4.8vw, 5rem);
+    line-height: 0.92;
   }
 
   .facts {
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
-
-}
-.logo {
-  width: 110px !important;
-  max-width: 110px !important;
-  height: auto !important;
-  display: block;
-  object-fit: contain;
-  flex-shrink: 0;
 }
 
-header.topbar > img.logo {
-  width: 220px !important;
-  min-width: 220px !important;
-  max-width: 220px !important;
-
-  height: auto !important;
-  max-height: 220px !important;
-
-  object-fit: contain !important;
-
-  transform: none !important;
-  position: static !important;
-
-  margin: 0 !important;
-  padding: 0 !important;
-
-  flex: 0 0 220px !important;
-  z-index: 9999 !important;
-}
+/* =====================================================
+   MÓVIL
+===================================================== */
 
 @media (max-width: 899px) {
-
   header.topbar {
-    position: absolute !important;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 22px 20px !important;
-    box-sizing: border-box;
+    padding: 22px 20px;
     display: flex;
-    justify-content: space-between;
     align-items: flex-start;
+    justify-content: space-between;
     z-index: 20;
   }
 
   header.topbar > img.logo {
-    position: absolute !important;
+    position: absolute;
     top: 18px;
     left: 18px;
-
-    width: 110px !important;
-    max-width: 110px !important;
-    height: auto !important;
-
-    transform: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-
+    width: 110px;
+    min-width: 110px;
+    max-width: 110px;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    transform: none;
     z-index: 30;
   }
 
@@ -186,87 +341,52 @@ header.topbar > img.logo {
     position: absolute;
     top: 22px;
     right: 20px;
+    left: auto;
+    margin: 0;
     z-index: 30;
   }
 
   .hero::before {
-
-    background:
-      linear-gradient(
-        to bottom,
-        rgba(4,7,5,.02) 20%,
-        rgba(4,7,5,.12) 65%,
-        #0b100d 100%
-      );
-
-    background-repeat: no-repeat;
     background-position: center top;
     background-size: contain;
-    background-color: #0b100d;
   }
 
   .hero-content {
     position: relative;
     z-index: 2;
+    padding-bottom: calc(120px + env(safe-area-inset-bottom));
   }
-
 }
+
 /* =====================================================
-   FASE 4.1 — MOVIMIENTO CINEMATOGRÁFICO DEL HERO
+   MOVIMIENTO CINEMATOGRÁFICO
 ===================================================== */
 
-.hero::before {
-  transform-origin: center center;
-  animation: movimientoAuraHero 14s ease-in-out infinite alternate;
-  will-change: transform;
-  backface-visibility: hidden;
-}
-
 @keyframes movimientoAuraHero {
-
   0% {
-    transform: scale(1.01) translate3d(0,0,0);
+    transform: scale(1.01) translate3d(0, 0, 0);
   }
 
   50% {
-    transform: scale(1.08) translate3d(-0.7%,-0.4%,0);
+    transform: scale(1.08) translate3d(-0.7%, -0.4%, 0);
   }
 
   100% {
-    transform: scale(1.15) translate3d(0.8%,-0.9%,0);
+    transform: scale(1.15) translate3d(0.8%, -0.9%, 0);
+  }
+}
+
+/* =====================================================
+   ACCESIBILIDAD
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 
-}
-
-/* =====================================================
-   BOTÓN AUDIO
-===================================================== */
-
-#playBtn{
-    width:auto;
-    min-width:0;
-    height:auto;
-
-    padding:14px 22px;
-
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-
-    gap:8px;
-
-    border-radius:999px;
-
-    white-space:nowrap;
-
-    font-size:16px;
-    line-height:1.2;
-}
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-body{
-    padding-bottom:calc(120px + env(safe-area-inset-bottom));
+  .hero::before {
+    animation: none;
+    transform: none;
+  }
 }
