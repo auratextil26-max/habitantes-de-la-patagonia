@@ -1,392 +1,86 @@
-:root {
-  --bg: #0b100d;
-  --panel: #121914;
-  --text: #f4f0e8;
-  --muted: #b7b9b4;
-  --accent: #a8b86f;
-  --line: rgba(255, 255, 255, 0.14);
+:root{--bg:#0b100d;--cream:#f3efe6;--text:#f8f4ec;--muted:#c5c8c0;--accent:#a5b76b;--line:rgba(255,255,255,.15)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;overflow-x:hidden}body{margin:0;overflow-x:hidden;background:var(--bg);color:var(--text);font-family:"Inter",Arial,sans-serif}img{display:block;width:100%}a{color:inherit;text-decoration:none}button{font:inherit}
+.floating-header{position:fixed;top:14px;left:50%;z-index:80;width:min(1180px,calc(100% - 28px));display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:10px 16px;border:1px solid transparent;border-radius:18px;opacity:0;pointer-events:none;transform:translate(-50%,-18px);transition:.35s}.floating-header.visible{opacity:1;pointer-events:auto;transform:translate(-50%,0);background:rgba(8,13,10,.72);border-color:rgba(255,255,255,.12);backdrop-filter:blur(16px)}.floating-brand img{width:108px;max-height:68px;object-fit:contain}.floating-header nav{display:flex;gap:24px}.floating-header nav a{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}.language-switcher,.hero-language{display:flex;align-items:center;gap:8px}.language-switcher{justify-self:end}.lang-btn{padding:4px 2px;border:0;border-bottom:1px solid transparent;background:transparent;color:rgba(255,255,255,.62);font-size:.72rem;letter-spacing:.12em;cursor:pointer}.lang-btn.active{color:var(--text);border-color:var(--accent)}
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;overflow:hidden}.hero-media{position:absolute;inset:-3%;background:url("assets/images/hero-patagonia.jpg") center 52%/cover no-repeat;transform:scale(1.045);will-change:transform}.hero-overlay{position:absolute;inset:0;background:radial-gradient(circle at center,rgba(0,0,0,.03),rgba(0,0,0,.68) 88%),linear-gradient(to top,rgba(5,9,7,.82),rgba(5,9,7,.14) 54%)}.hero-inner{position:relative;z-index:2;width:min(980px,calc(100% - 40px));padding:64px 20px 110px;text-align:center}.hero-logo{width:clamp(220px,27vw,340px);max-height:220px;margin:0 auto 12px;object-fit:contain}.hero-kicker,.eyebrow{margin:0 0 12px;color:var(--accent);font-size:.72rem;font-weight:600;letter-spacing:.2em}.hero h1,.transition-content h2,.section-heading h2,.species-copy h3,.process-intro h2,.process-line h3,.purpose-content blockquote{font-family:"Cormorant Garamond",Georgia,serif}.hero h1{margin:0;font-size:clamp(4rem,11vw,9.2rem);font-weight:500;line-height:.78;letter-spacing:-.05em}.hero-tagline{margin:24px 0 0;color:var(--accent);font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(1.35rem,2.8vw,2.35rem)}.hero-cta{display:inline-flex;align-items:center;gap:26px;margin-top:32px;padding:16px 26px;border:1px solid rgba(165,183,107,.9);background:rgba(8,13,10,.34);color:var(--text);backdrop-filter:blur(10px);font-size:.8rem;letter-spacing:.14em;cursor:pointer}.hero-language{position:absolute;top:22px;right:24px;z-index:3}.hero-reveal{opacity:0;transform:translateY(16px);animation:heroReveal .9s forwards}.r1{animation-delay:.35s}.r2{animation-delay:.75s}.r3{animation-delay:1.1s}.r4{animation-delay:1.5s}.r5{animation-delay:1.9s}@keyframes heroReveal{to{opacity:1;transform:translateY(0)}}
+.transition-section{min-height:88svh;display:grid;place-items:center;padding:100px 24px;background:var(--cream);color:#142018}.transition-content{width:min(980px,100%);text-align:center}.transition-line{margin:0 0 6px;color:#657044;font-size:clamp(1rem,1.6vw,1.2rem);letter-spacing:.08em;text-transform:uppercase}.transition-content h2{margin:0;font-size:clamp(3.2rem,8vw,7rem);font-weight:500;line-height:.95}.transition-content>p:last-child{max-width:760px;margin:30px auto 0;color:#4e594f;font-size:clamp(1rem,1.6vw,1.14rem);line-height:1.75}
+.species-section{padding:100px 24px 120px}.section-heading{max-width:1100px;margin:0 auto 70px;text-align:center}.section-heading h2,.process-intro h2{margin:0;font-size:clamp(3rem,6vw,5.2rem);font-weight:500}.species-chapter{max-width:1320px;margin:0 auto 120px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(320px,.75fr);gap:clamp(36px,6vw,90px);align-items:center}.species-right{grid-template-columns:minmax(320px,.75fr) minmax(0,1.25fr)}.species-right .species-image-wrap{grid-column:2;grid-row:1}.species-right .species-copy{grid-column:1;grid-row:1}.species-image-wrap{min-height:680px;overflow:hidden;background:#151d17}.species-image-wrap img{height:100%;min-height:680px;object-fit:cover;transition:transform .9s ease}.species-chapter:hover img{transform:scale(1.035)}.species-copy span{color:var(--accent);font-size:.72rem;letter-spacing:.16em}.species-copy h3{margin:12px 0 4px;font-size:clamp(2.7rem,5vw,4.8rem);font-weight:500;line-height:.95}.scientific{margin:0 0 22px;color:rgba(255,255,255,.65)}.species-copy>p:not(.scientific){max-width:520px;color:var(--muted);font-size:1.04rem;line-height:1.75}.species-copy a{display:inline-block;margin-top:18px;color:var(--accent);font-size:.8rem;font-weight:600}
+.process-section{padding:100px 24px 120px;background:var(--cream);color:#142018}.process-intro{max-width:1000px;margin:0 auto 70px;text-align:center}.process-line{position:relative;max-width:1320px;margin:auto;display:grid;grid-template-columns:repeat(5,1fr);gap:22px}.process-line:before{content:"";position:absolute;top:18px;left:8%;right:8%;height:1px;background:rgba(20,32,24,.22)}.process-line article{position:relative;padding-top:44px;text-align:center}.process-line article:before{content:"";position:absolute;top:11px;left:50%;width:14px;height:14px;border:2px solid #6e7c48;border-radius:50%;background:var(--cream);transform:translateX(-50%)}.process-line span{color:#6e7c48;font-size:.7rem;letter-spacing:.15em}.process-line h3{margin:10px 0 8px;font-size:1.65rem;font-weight:500}.process-line p{margin:0;color:#536055;font-size:.92rem;line-height:1.55}
+.purpose-section{position:relative;min-height:720px;display:grid;place-items:center;overflow:hidden}.purpose-media{position:absolute;inset:0;background:url("assets/images/hero-patagonia.jpg") center 58%/cover no-repeat}.purpose-overlay{position:absolute;inset:0;background:linear-gradient(rgba(6,10,8,.34),rgba(6,10,8,.82)),radial-gradient(circle at center,transparent,rgba(0,0,0,.62))}.purpose-content{position:relative;z-index:2;width:min(1020px,calc(100% - 40px));padding:90px 20px;text-align:center}.purpose-content blockquote{margin:0;font-size:clamp(2.5rem,5.2vw,5.2rem);font-weight:500;line-height:1.04}
+.footer{padding:58px 24px;text-align:center;border-top:1px solid var(--line)}.footer img{width:180px;max-height:120px;margin:0 auto 18px;object-fit:contain}.footer p{color:var(--muted)}.social-links{display:flex;justify-content:center;gap:24px;margin:22px 0;font-size:.82rem}.footer small{color:rgba(255,255,255,.5)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .85s ease,transform .85s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:980px){.floating-header{grid-template-columns:1fr auto}.floating-header nav{display:none}.species-chapter,.species-right{grid-template-columns:1fr}.species-right .species-image-wrap,.species-right .species-copy{grid-column:1;grid-row:auto}.species-image-wrap,.species-image-wrap img{min-height:560px}.process-line{grid-template-columns:1fr;max-width:760px}.process-line:before{top:0;bottom:0;left:16px;right:auto;width:1px;height:auto}.process-line article{padding:0 0 34px 54px;text-align:left}.process-line article:before{top:2px;left:10px;transform:none}}
+@media(max-width:680px){.floating-header{top:8px;width:calc(100% - 16px);padding:8px 12px}.floating-brand img{width:88px}.hero-inner{padding-top:46px}.hero-logo{width:190px}.hero h1{font-size:clamp(3.6rem,18vw,5.3rem)}.hero-language{top:16px;right:14px}.transition-section{min-height:76svh}.species-section{padding-left:16px;padding-right:16px}.species-image-wrap,.species-image-wrap img{min-height:460px}.species-chapter{margin-bottom:88px}.species-copy h3{font-size:2.8rem}.purpose-content blockquote{font-size:clamp(2.2rem,10vw,3.7rem)}.social-links{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-reveal,.reveal{opacity:1;transform:none;animation:none;transition:none}.species-image-wrap img{transition:none}}
+
+/* V4 — Patagonia habitat art direction */
+:root{--paper:#f3efe6;--sand:#e8e2d6;--rock:#d8d5ce;--steppe:#d7c8ae;--forest:#243126;--lake:#d9e8eb;--moss:#6e7c48;--earth:#cfc3af}
+.hero-overlay{background:linear-gradient(90deg,rgba(5,9,7,.58),rgba(5,9,7,.10) 48%,rgba(5,9,7,.34)),linear-gradient(to top,rgba(5,9,7,.78),rgba(5,9,7,.08) 55%)}
+.hero-inner{padding-top:42px}
+.brand-stage{width:clamp(310px,38vw,510px);margin:0 auto 14px;padding:24px 34px 18px;border-radius:34px;background:radial-gradient(ellipse at center,rgba(8,15,11,.56),rgba(8,15,11,.14) 62%,transparent 76%);filter:drop-shadow(0 12px 26px rgba(0,0,0,.30))}
+.hero-logo{width:100%;max-height:290px;margin:0 auto;object-fit:contain;filter:drop-shadow(0 3px 8px rgba(0,0,0,.35))}
+.hero-presenta{margin:0 0 13px;color:#f1ede3;font-size:.66rem;font-weight:600;letter-spacing:.34em;text-indent:.34em}
+.transition-section{position:relative;background:linear-gradient(180deg,#eee8dc 0%,var(--paper) 35%,#eee8dc 100%)}
+.transition-section:after,.process-section:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.14;background-image:radial-gradient(rgba(50,58,45,.16) .55px,transparent .55px);background-size:7px 7px}
+.transition-content{position:relative;z-index:1}
+.species-section{padding:0;background:var(--paper);color:#172019}
+.section-heading{max-width:none;margin:0;padding:110px 24px 80px;background:linear-gradient(180deg,#eee8dc,var(--sand))}
+.species-chapter{max-width:none;margin:0;padding:100px max(24px,calc((100vw - 1320px)/2));min-height:92svh;position:relative}
+.species-image-wrap{box-shadow:0 28px 70px rgba(25,28,22,.15)}
+.species-copy .scientific{color:rgba(25,32,26,.58)}
+.species-copy>p:not(.scientific){color:#4d574e}
+.species-copy span,.species-copy a{color:var(--moss)}
+.habitat-flamingo{background:linear-gradient(135deg,#eee7dc,var(--sand))}
+.habitat-puma{background:linear-gradient(135deg,#d8cdbd,var(--earth))}
+.habitat-condor{background:linear-gradient(135deg,#e4e1db,var(--rock))}
+.habitat-guanaco{background:linear-gradient(135deg,#e5d8c1,var(--steppe))}
+.habitat-woodpecker{background:linear-gradient(135deg,#2b392d,var(--forest));color:var(--text)}
+.habitat-woodpecker .species-copy .scientific{color:rgba(255,255,255,.62)}
+.habitat-woodpecker .species-copy>p:not(.scientific){color:#d1d6cf}
+.habitat-woodpecker .species-copy span,.habitat-woodpecker .species-copy a{color:#b6c47f}
+.habitat-kingfisher{background:linear-gradient(135deg,#e5eff0,var(--lake))}
+.process-section{position:relative;background:linear-gradient(180deg,#e9e2d5,var(--paper));color:#142018}
+.process-intro,.process-line{position:relative;z-index:1}
+.footer{background:#111813}
+@media(max-width:680px){.brand-stage{width:min(310px,86vw);padding:18px 22px 12px}.hero-logo{width:100%}.species-chapter{padding:72px 16px}.section-heading{padding:86px 18px 60px}}
+
+
+/* V4.5 — launch polish */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
 
-* {
-  box-sizing: border-box;
+.hero-cta,
+.floating-nav a,
+.social-links a,
+.species-copy a {
+  -webkit-tap-highlight-color: transparent;
 }
 
-html {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
+@media (max-width: 680px) {
+  .hero-media { background-position: 52% 52%; }
+  .hero-inner { width: min(100% - 24px, 620px); }
+  .hero-cta { width: 100%; justify-content: space-between; max-width: 360px; }
+  .section-heading { margin-bottom: 46px; }
+  .species-copy { padding: 0 4px; }
 }
 
-body {
-  margin: 0;
-  overflow-x: hidden;
-  padding-bottom: calc(120px + env(safe-area-inset-bottom));
-  background: var(--bg);
-  color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.6;
-}
-
-/* =====================================================
-   BARRA SUPERIOR
-===================================================== */
-
-.topbar {
-  position: absolute;
-  top: 18px;
-  left: 22px;
-  right: 22px;
-  z-index: 20;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  pointer-events: none;
-}
-
-.brand {
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-}
-
-.subbrand {
-  margin-top: 4px;
-  color: var(--muted);
-  font-size: 0.58rem;
-  letter-spacing: 0.18em;
-}
-
-.edition {
-  padding: 6px 10px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-}
-
-.logo {
-  display: block;
-  width: 110px;
-  max-width: 110px;
-  height: auto;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-
-/* =====================================================
-   HERO
-   Cada especie define su propia fotografía en su index.html
-===================================================== */
-
-.hero {
-  position: relative;
-  min-height: 100vh;
-  min-height: 100svh;
-  display: flex;
-  align-items: flex-end;
-  overflow: hidden;
-  background: var(--bg);
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-color: #0b100d;
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: contain;
-  transform-origin: center center;
-  animation: movimientoAuraHero 14s ease-in-out infinite alternate;
-  will-change: transform;
-  backface-visibility: hidden;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 760px;
-  padding: 0 24px 58px;
-}
-
-.photo-credit {
-  position: absolute;
-  right: 18px;
-  bottom: 16px;
-  z-index: 3;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 0.7rem;
-}
-
-/* =====================================================
-   TIPOGRAFÍA
-===================================================== */
-
-.eyebrow,
-.kicker {
-  color: #c8d66b;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-}
-
-h1,
-h2 {
-  margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  line-height: 1;
-}
-
-h1 {
-  color: #ffffff;
-  font-size: clamp(3.6rem, 5.8vw, 6rem);
-}
-
-h2 {
-  margin: 12px 0 28px;
-  font-size: clamp(2.4rem, 9vw, 4.8rem);
-}
-
-.scientific {
-  margin: 16px 0 26px;
-  color: #d7d7d7;
-}
-
-/* =====================================================
-   BOTÓN DE AUDIO
-===================================================== */
-
-button,
-#playBtn {
-  width: auto;
-  min-width: 0;
-  height: auto;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 14px 22px;
-  border: 0;
-  border-radius: 999px;
-  background: var(--text);
-  color: #111;
-  font-size: 0.95rem;
-  font-weight: 700;
-  line-height: 1.2;
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-button.playing,
-#playBtn.playing {
-  animation: pulse 1.8s infinite;
-}
-
-@keyframes pulse {
-  50% {
-    box-shadow: 0 0 0 14px rgba(244, 240, 232, 0);
-  }
-}
-
-/* =====================================================
-   SECCIONES
-===================================================== */
-
-.section {
-  max-width: 920px;
-  margin: auto;
-  padding: 76px 24px;
-}
-
-.section p {
-  color: var(--muted);
-  font-size: 1.03rem;
-}
-
-.facts {
-  display: grid;
-  gap: 1px;
-  padding: 1px;
-  background: var(--line);
-}
-
-.facts article {
-  padding: 32px 24px;
-  background: var(--panel);
-}
-
-.facts span {
-  color: var(--accent);
-  font-size: 0.74rem;
-  letter-spacing: 0.14em;
-}
-
-.facts h3 {
-  margin: 14px 0 6px;
-}
-
-.row {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 18px 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.row span {
-  color: var(--muted);
-}
-
-.purpose {
-  border-top: 1px solid var(--line);
-  text-align: center;
-}
-
-.purpose-text {
-  color: var(--text) !important;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.8rem, 6vw, 3rem) !important;
-  line-height: 1.2;
-}
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer {
-  padding: 50px 24px;
-  border-top: 1px solid var(--line);
-  color: var(--muted);
-  text-align: center;
-}
-
-/* =====================================================
-   ESCRITORIO
-===================================================== */
-
-@media (min-width: 900px) {
-  .topbar {
-    padding: 36px;
-  }
-
-  header.topbar > img.logo {
-    position: static;
-    width: 220px;
-    min-width: 220px;
-    max-width: 220px;
-    max-height: 220px;
-    margin: 0;
-    padding: 0;
-    object-fit: contain;
-    flex: 0 0 220px;
-    z-index: 9999;
-  }
-
-  .hero::before {
-    left: 36%;
-    width: 64%;
-    background-position: center center;
-    background-size: contain;
-  }
-
-  .hero-content {
-    width: 36%;
-    max-width: 36%;
-    padding: 0 18px 74px 48px;
-  }
-
-  .hero-content h1 {
-    margin: 0;
-    font-size: clamp(3rem, 4.8vw, 5rem);
-    line-height: 0.92;
-  }
-
-  .facts {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* =====================================================
-   MÓVIL
-===================================================== */
-
-@media (max-width: 899px) {
-  header.topbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 22px 20px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    z-index: 20;
-  }
-
-  header.topbar > img.logo {
-    position: absolute;
-    top: 18px;
-    left: 18px;
-    width: 110px;
-    min-width: 110px;
-    max-width: 110px;
-    height: auto;
-    margin: 0;
-    padding: 0;
-    transform: none;
-    z-index: 30;
-  }
-
-  header.topbar .edition {
-    position: absolute;
-    top: 22px;
-    right: 20px;
-    left: auto;
-    margin: 0;
-    z-index: 30;
-  }
-
-  .hero::before {
-    background-position: center top;
-    background-size: contain;
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    padding-bottom: calc(120px + env(safe-area-inset-bottom));
-  }
-}
-
-/* =====================================================
-   MOVIMIENTO CINEMATOGRÁFICO
-===================================================== */
-
-@keyframes movimientoAuraHero {
-  0% {
-    transform: scale(1.01) translate3d(0, 0, 0);
-  }
-
-  50% {
-    transform: scale(1.08) translate3d(-0.7%, -0.4%, 0);
-  }
-
-  100% {
-    transform: scale(1.15) translate3d(0.8%, -0.9%, 0);
-  }
-}
-
-/* =====================================================
-   ACCESIBILIDAD
-===================================================== */
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  .hero::before {
-    animation: none;
-    transform: none;
-  }
+/* V4.7 mobile polish */
+@media(max-width:680px){
+.hero{min-height:100svh}
+.hero-media{background-position:50% 54%}
+.hero-inner{width:100%;max-width:100%;padding:78px 22px;text-align:center}
+.hero-logo{width:min(74vw,285px);max-height:205px;margin:0 auto 14px}
+.hero-kicker{margin:0 auto 12px;font-size:.62rem;letter-spacing:.18em}
+.hero h1{width:100%;margin-left:auto;margin-right:auto;font-size:clamp(3.35rem,17vw,5rem);line-height:.82;text-align:center}
+.hero-tagline{max-width:330px;margin:23px auto 0;font-size:1.42rem;line-height:1.15}
+.hero-cta{margin:28px auto 0;padding:14px 18px;gap:16px;width:auto;max-width:calc(100% - 12px);justify-content:center;font-size:.69rem;letter-spacing:.11em}
+.transition-section{min-height:auto;padding:92px 22px}
+.transition-content h2{font-size:clamp(3rem,14vw,4.5rem)}
+.species-image-wrap,.species-image-wrap img{min-height:0;height:64svh}
+.species-image-wrap img{object-fit:cover}
+.species-copy{padding-top:22px}
+.species-copy a{display:inline-flex;min-height:44px;align-items:center}
+.process-section{padding:82px 22px 92px}
+.purpose-section{min-height:76svh}
 }

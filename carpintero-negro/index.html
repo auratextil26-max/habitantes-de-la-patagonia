@@ -1,107 +1,186 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b100d">
-  <meta name="description" content="Patagonia Sonora de Aura Textil: conoce y escucha al Carpintero Negro.">
-  <title>Carpintero Negro | Aura Textil</title>
-  <link rel="stylesheet" href="../styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#10241f">
+<meta name="description" content="Conoce al Carpintero Negro, escucha su sonido y descubre su historia dentro de Patagonia Salvaje de Aura Textil.">
+<title>Carpintero Negro | Patagonia Salvaje</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="species.css">
+<style>
+:root{
+  --species-panel:#243126;
+  --species-text:#f4f0e8;
+  --accent:#a5b76b;
+}
+.sound{
+  color:#f4f0e8;
+}
+.sound .player{
+  border-color:rgba(255,255,255,.18);
+  background:rgba(255,255,255,.06);
+}
+</style>
 </head>
 <body>
-  <header class="topbar">
-      <img src="../logo.png" alt="Aura Textil" class="logo">
-      <div class="edition">PS–001</div>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="hero-content">
-        <p class="eyebrow">ESCANEA. ESCUCHA. DESCUBRE.</p>
-        <h1>Carpintero<br>Negro</h1>
-        <p class="scientific"><em>Campephilus magellanicus</em></p>
+<header class="top">
+<a href="../index.html#especies">
+  <img src="../assets/images/logo.png" alt="Aura Textil">
+</a>
+<div class="top-right">
+  <a href="../index.html#especies"
+     data-es="Los protagonistas"
+     data-en="The protagonists">Los protagonistas</a>
+  <div class="lang">
+    <button data-lang="es">ES</button> |
+    <button data-lang="en">EN</button>
+  </div>
+</div>
+</header>
 
-        <button id="playBtn" type="button" aria-label="Reproducir sonido del Carpintero Negro">
-          ▶ Escuchar su sonido
-        </button>
+<main>
 
-        <audio id="audio" preload="metadata">
-          <source src="../carpintero-negro.mp3" type="audio/mpeg">
-          Tu navegador no permite reproducir audio.
-        </audio>
-      </div>
+<section class="hero">
+<div class="photo">
+  <img src="../assets/images/carpintero.jpg" alt="Carpintero Negro">
+</div>
 
-      <div class="photo-credit">Fotografía: @foto_faunachile</div>
-    </section>
+<div class="hero-copy">
+<p class="eyebrow"
+   data-es="BOSQUE AUSTRAL"
+   data-en="SOUTHERN FOREST">BOSQUE AUSTRAL</p>
 
-    <section class="section">
-      <p class="kicker">EL GUARDIÁN DEL BOSQUE AUSTRAL</p>
-      <h2>Una voz que resuena entre lengas y coigües.</h2>
-      <p>
-        El Carpintero Negro es una de las aves más emblemáticas de los bosques australes.
-        Sus golpes sobre los troncos le permiten comunicarse, marcar territorio y encontrar
-        alimento bajo la corteza.
-      </p>
-      <p>
-        Conocer su sonido es una forma de acercarnos al paisaje natural que inspira cada
-        diseño de Aura Textil.
-      </p>
-    </section>
+<h1 data-es="Carpintero Negro"
+    data-en="Magellanic Woodpecker">Carpintero Negro</h1>
 
-    <section class="facts">
-      <article>
-        <span>01</span>
-        <h3>Gran tamaño</h3>
-        <p>Es el carpintero de mayor tamaño de Sudamérica.</p>
-      </article>
-      <article>
-        <span>02</span>
-        <h3>Bosque nativo</h3>
-        <p>Habita principalmente bosques maduros del sur de Chile y Argentina.</p>
-      </article>
-      <article>
-        <span>03</span>
-        <h3>Dimorfismo</h3>
-        <p>El macho destaca por su cabeza roja; la hembra presenta una coloración más oscura.</p>
-      </article>
-      <article>
-        <span>04</span>
-        <h3>Nidos excavados</h3>
-        <p>Construye cavidades en árboles que también pueden favorecer a otras especies.</p>
-      </article>
-    </section>
+<p class="latin"><em>Campephilus magellanicus</em></p>
 
-    <section class="section">
-      <p class="kicker">CONSERVACIÓN</p>
-      <h2>Proteger su hábitat es proteger la memoria viva de la Patagonia.</h2>
-      <p>
-        El Carpintero Negro depende de bosques nativos con árboles grandes y antiguos.
-        La conservación de estos ambientes es esencial para mantener sus lugares de
-        alimentación, refugio y reproducción.
-      </p>
-    </section>
+<p class="intro"
+   data-es="El pulso del bosque austral. Su presencia, sus llamados y su tamborileo forman parte del paisaje sonoro de los bosques patagónicos."
+   data-en="The pulse of the southern forest. Its presence, calls and drumming are part of the soundscape of Patagonian forests.">
+El pulso del bosque austral. Su presencia, sus llamados y su tamborileo forman parte del paisaje sonoro de los bosques patagónicos.
+</p>
 
-    <section class="section credits">
-      <p class="kicker">CRÉDITOS</p>
-      <div class="row"><span>Fotografía</span><strong>@foto_faunachile</strong></div>
-      <div class="row"><span>Experiencia y diseño</span><strong>Aura Textil</strong></div>
-      <div class="row"><span>Colección</span><strong>Sonidos de la Patagonia · PS–001</strong></div>
-    </section>
+<div class="facts">
+<div class="fact">
+  <b data-es="Hábitat" data-en="Habitat">Hábitat</b>
+  <span data-es="Bosques nativos australes"
+        data-en="Southern native forests">Bosques nativos australes</span>
+</div>
 
-    <section class="section purpose">
-      <p class="kicker">NUESTRO PROPÓSITO</p>
-      <p class="purpose-text">
-        En Aura Textil creemos que cada fotografía cuenta una historia y que cada especie
-        merece ser conocida y protegida.
-      </p>
-    </section>
-  </main>
+<div class="fact">
+  <b data-es="Distribución" data-en="Range">Distribución</b>
+  <span data-es="Sur de Chile y Patagonia"
+        data-en="Southern Chile and Patagonia">Sur de Chile y Patagonia</span>
+</div>
 
-  <footer>
-    <strong>AURA TEXTIL</strong>
-    <p>Donde la Patagonia se convierte en arte.</p>
-  </footer>
+<div class="fact">
+  <b data-es="Alimentación" data-en="Diet">Alimentación</b>
+  <span data-es="Insectos y larvas que encuentra principalmente en la madera"
+        data-en="Insects and larvae found mainly in wood">
+  Insectos y larvas que encuentra principalmente en la madera
+  </span>
+</div>
+</div>
+</div>
+</section>
 
-  <script src="../script.js"></script>
+<div class="content">
+<section class="section">
+<div class="section-grid">
+
+<div>
+<p class="eyebrow"
+   data-es="CONOCE AL PROTAGONISTA"
+   data-en="MEET THE PROTAGONIST">CONOCE AL PROTAGONISTA</p>
+<h2 data-es="Sobre la especie"
+    data-en="About the species">Sobre la especie</h2>
+</div>
+
+<p class="bodycopy"
+   data-es="El Carpintero Negro es una de las aves más características de los bosques australes. Trepa por troncos y ramas utilizando su fuerte pico para buscar alimento y excavar cavidades. Su actividad ayuda a transformar el bosque, ya que las cavidades que crea también pueden ser utilizadas posteriormente por otras especies."
+   data-en="The Magellanic Woodpecker is one of the most characteristic birds of southern forests. It climbs trunks and branches, using its powerful bill to search for food and excavate cavities. Its activity helps shape the forest, as the cavities it creates may later be used by other species.">
+El Carpintero Negro es una de las aves más características de los bosques australes. Trepa por troncos y ramas utilizando su fuerte pico para buscar alimento y excavar cavidades. Su actividad ayuda a transformar el bosque, ya que las cavidades que crea también pueden ser utilizadas posteriormente por otras especies.
+</p>
+
+</div>
+</section>
+</div>
+
+<section class="sound">
+<div class="sound-inner">
+
+<div>
+<p class="eyebrow"
+   data-es="SONIDOS DE LA PATAGONIA"
+   data-en="SOUNDS OF PATAGONIA">SONIDOS DE LA PATAGONIA</p>
+<h2 data-es="Escucha su voz"
+    data-en="Listen to its voice">Escucha su voz</h2>
+</div>
+
+<div>
+<p data-es="Escucha sus llamados y el característico sonido que forma parte de la identidad del bosque austral."
+   data-en="Listen to its calls and the characteristic sound that forms part of the identity of the southern forest.">
+Escucha sus llamados y el característico sonido que forma parte de la identidad del bosque austral.
+</p>
+
+<div class="player">
+<audio controls preload="metadata">
+  <source src="https://auratextil26-max.github.io/habitantes-de-la-patagonia/carpintero-negro.mp3" type="audio/mpeg">
+  Tu navegador no permite reproducir audio.
+</audio>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="aura">
+<div class="aura-inner">
+
+<div>
+<p class="eyebrow">AURA TEXTIL</p>
+<h2 data-es="De la fotografía al diseño"
+    data-en="From photography to design">De la fotografía al diseño</h2>
+
+<p data-es="Esta fotografía forma parte del origen visual de Patagonia Salvaje: fauna de la Patagonia transformada en una propuesta textil que invita a mirar con más atención las especies que inspiran cada diseño."
+   data-en="This photograph is part of the visual origin of Patagonia Salvaje: Patagonian wildlife transformed into a textile proposal that invites us to look more closely at the species behind every design.">
+Esta fotografía forma parte del origen visual de Patagonia Salvaje: fauna de la Patagonia transformada en una propuesta textil que invita a mirar con más atención las especies que inspiran cada diseño.
+</p>
+</div>
+
+<div class="aura-card">
+<p class="qr-title"
+   data-es="EXPERIENCIA QR"
+   data-en="QR EXPERIENCE">EXPERIENCIA QR</p>
+
+<p data-es="El producto te invita a conocer y descubrir más sobre cada especie."
+   data-en="The product invites you to learn and discover more about each species.">
+El producto te invita a conocer y descubrir más sobre cada especie.
+</p>
+
+<a class="back"
+   href="../index.html#especies"
+   data-es="← Volver a Los protagonistas"
+   data-en="← Back to The protagonists">
+← Volver a Los protagonistas
+</a>
+</div>
+
+</div>
+</section>
+
+</main>
+
+<footer class="footer">
+<img src="../assets/images/logo.png" alt="Aura Textil">
+<p>Patagonia Salvaje · Aura Textil</p>
+</footer>
+
+<script src="species.js"></script>
 </body>
 </html>
