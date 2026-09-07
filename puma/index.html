@@ -1,196 +1,56 @@
 <!doctype html>
 <html lang="es">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b100d">
-  <meta
-    name="description"
-    content="Sonidos de la Patagonia de Aura Textil: conoce y escucha al Puma."
-  >
-
-  <title>Puma | Aura Textil</title>
-
-  <link rel="stylesheet" href="../styles.css">
-
-  <style>
-    .hero::before {
-      background:
-        linear-gradient(
-          to top,
-          rgba(4, 7, 5, 0.72) 2%,
-          rgba(4, 7, 5, 0.08) 55%,
-          rgba(4, 7, 5, 0.02)
-        ),
-        url("puma.jpg") center center / contain no-repeat !important;
-
-      background-color: #0b100d !important;
-    }
-
-    @media (max-width: 899px) {
-      .hero::before {
-        background:
-          linear-gradient(
-            to bottom,
-            rgba(4, 7, 5, 0.02) 20%,
-            rgba(4, 7, 5, 0.12) 70%,
-            #0b100d 100%
-          ),
-          url("puma.jpg") center top / contain no-repeat !important;
-
-        background-color: #0b100d !important;
-      }
-    }
-  </style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Puma | Patagonia Salvaje</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="species.css">
+<style>:root{--species-panel:#d7c5b4;--species-text:#2b241f;--accent:#665447}</style>
 </head>
-
 <body>
-
-  <header class="topbar">
-    <img src="../logo.png" alt="Aura Textil" class="logo">
-    <div class="edition">PS–002</div>
-  </header>
-
-  <main>
-
-    <section class="hero">
-      <div class="hero-content">
-
-        <p class="eyebrow">ESCANEA. ESCUCHA. DESCUBRE.</p>
-
-        <h1>Puma</h1>
-
-        <p class="scientific">
-          <em>Puma concolor</em>
-        </p>
-
-        <button
-          id="playBtn"
-          type="button"
-          aria-label="Reproducir sonido del Puma"
-        >
-          ▶ Escuchar su sonido
-        </button>
-
-        <audio id="audio" preload="metadata">
-          <source src="puma.mp3" type="audio/mpeg">
-          Tu navegador no permite reproducir audio.
-        </audio>
-
-      </div>
-
-      <div class="photo-credit">
-        Fotografía: @foto_faunachile
-      </div>
-    </section>
-
-    <section class="section">
-
-      <p class="kicker">EL GUARDIÁN DE LA ESTEPA</p>
-
-      <h2>
-        Una presencia silenciosa que sostiene el equilibrio patagónico.
-      </h2>
-
-      <p>
-        El puma es el mayor felino de la Patagonia y uno de los depredadores
-        más emblemáticos de Sudamérica. Silencioso, ágil y adaptable, habita
-        montañas, estepas y bosques.
-      </p>
-
-      <p>
-        Durante sus primeros meses de vida, las crías permanecen junto a su
-        madre, aprendiendo a observar, desplazarse, cazar y reconocer su
-        territorio.
-      </p>
-
-    </section>
-
-    <section class="facts">
-
-      <article>
-        <span>01</span>
-        <h3>Gran felino</h3>
-        <p>Es el carnívoro terrestre más grande que habita en Chile.</p>
-      </article>
-
-      <article>
-        <span>02</span>
-        <h3>Amplia distribución</h3>
-        <p>Habita estepas, bosques, montañas y zonas de matorral.</p>
-      </article>
-
-      <article>
-        <span>03</span>
-        <h3>Crías manchadas</h3>
-        <p>Las crías nacen con manchas que desaparecen mientras crecen.</p>
-      </article>
-
-      <article>
-        <span>04</span>
-        <h3>Vida silenciosa</h3>
-        <p>Es territorial y generalmente solitario.</p>
-      </article>
-
-    </section>
-
-    <section class="section">
-
-      <p class="kicker">CONSERVACIÓN</p>
-
-      <h2>
-        Proteger al puma es conservar el equilibrio natural de la Patagonia.
-      </h2>
-
-      <p>
-        La pérdida de hábitat y la persecución humana son algunas de las
-        amenazas que enfrenta. Conservar los paisajes donde vive permite
-        proteger también a muchas otras especies patagónicas.
-      </p>
-
-    </section>
-
-    <section class="section credits">
-
-      <p class="kicker">CRÉDITOS</p>
-
-      <div class="row">
-        <span>Fotografía</span>
-        <strong>@foto_faunachile</strong>
-      </div>
-
-      <div class="row">
-        <span>Experiencia y diseño</span>
-        <strong>Aura Textil</strong>
-      </div>
-
-      <div class="row">
-        <span>Colección</span>
-        <strong>Sonidos de la Patagonia · PS–002</strong>
-      </div>
-
-    </section>
-
-    <section class="section purpose">
-
-      <p class="kicker">NUESTRO PROPÓSITO</p>
-
-      <p class="purpose-text">
-        En Aura Textil creemos que cada fotografía cuenta una historia y que
-        cada especie merece ser conocida y protegida.
-      </p>
-
-    </section>
-
-  </main>
-
-  <footer>
-    <strong>AURA TEXTIL</strong>
-    <p>Donde la Patagonia se convierte en arte.</p>
-  </footer>
-
-  <script src="../script.js"></script>
-
-</body>
-</html>
+<header class="top">
+<a href="../index.html#especies"><img src="../assets/images/logo.png" alt="Aura Textil"></a>
+<div class="top-right">
+<a href="../index.html#especies" data-es="Los protagonistas" data-en="The protagonists">Los protagonistas</a>
+<div class="lang"><button data-lang="es">ES</button> | <button data-lang="en">EN</button></div>
+</div>
+</header>
+<main>
+<section class="hero">
+<div class="photo"><img src="../assets/images/puma.jpg" alt="Puma"></div>
+<div class="hero-copy">
+<p class="eyebrow" data-es="ESTEPA Y MONTAÑA" data-en="STEPPE AND MOUNTAIN">ESTEPA Y MONTAÑA</p>
+<h1 data-es="Puma" data-en="Puma">Puma</h1>
+<p class="latin">Puma concolor</p>
+<p class="intro" data-es="Una presencia silenciosa y poderosa que forma parte del equilibrio natural de la Patagonia." data-en="A silent and powerful presence that forms part of Patagonia's natural balance.">Una presencia silenciosa y poderosa que forma parte del equilibrio natural de la Patagonia.</p>
+<div class="facts">
+<div class="fact"><b data-es="Hábitat" data-en="Habitat">Hábitat</b><span data-es="Estepa, matorral, bosque y sectores montañosos" data-en="Steppe, shrubland, forest and mountain areas">Estepa, matorral, bosque y sectores montañosos</span></div>
+<div class="fact"><b data-es="Distribución" data-en="Range">Distribución</b><span data-es="Amplia distribución en América; presente en Patagonia" data-en="Widely distributed in the Americas; present in Patagonia">Amplia distribución en América; presente en Patagonia</span></div>
+<div class="fact"><b data-es="Alimentación" data-en="Diet">Alimentación</b><span data-es="Carnívoro; consume distintas presas según el territorio" data-en="Carnivore; feeds on different prey depending on the territory">Carnívoro; consume distintas presas según el territorio</span></div>
+</div>
+</div>
+</section>
+<div class="content">
+<section class="section"><div class="section-grid">
+<div><p class="eyebrow" data-es="CONOCE AL PROTAGONISTA" data-en="MEET THE PROTAGONIST">CONOCE AL PROTAGONISTA</p><h2 data-es="Sobre la especie" data-en="About the species">Sobre la especie</h2></div>
+<p class="bodycopy" data-es="El Puma es el mayor felino de la Patagonia. Su capacidad de adaptación le permite desplazarse por ambientes muy distintos y pasar inadvertido incluso en paisajes abiertos. Es una especie clave dentro de las relaciones naturales del ecosistema." data-en="The Puma is Patagonia's largest wild cat. Its adaptability allows it to move through very different environments and remain unnoticed even in open landscapes. It is a key species within the ecosystem's natural relationships.">El Puma es el mayor felino de la Patagonia. Su capacidad de adaptación le permite desplazarse por ambientes muy distintos y pasar inadvertido incluso en paisajes abiertos. Es una especie clave dentro de las relaciones naturales del ecosistema.</p>
+</div></section>
+</div>
+<section class="sound"><div class="sound-inner">
+<div><p class="eyebrow" data-es="SONIDOS DE LA PATAGONIA" data-en="SOUNDS OF PATAGONIA">SONIDOS DE LA PATAGONIA</p><h2 data-es="Escucha su voz" data-en="Listen to its voice">Escucha su voz</h2></div>
+<div><p data-es="Aunque suele asociarse al silencio, el puma utiliza distintas vocalizaciones para comunicarse. Escucha aquí uno de sus registros." data-en="Although often associated with silence, pumas use different vocalizations to communicate. Listen to one of their recordings here.">Aunque suele asociarse al silencio, el puma utiliza distintas vocalizaciones para comunicarse. Escucha aquí uno de sus registros.</p>
+<div class="player"><audio controls preload="metadata"><source src="../assets/audio/puma.mp3" type="audio/mpeg"></audio></div></div>
+</div></section>
+<section class="aura"><div class="aura-inner">
+<div><p class="eyebrow">AURA TEXTIL</p><h2 data-es="De la fotografía al diseño" data-en="From photography to design">De la fotografía al diseño</h2>
+<p data-es="Esta fotografía forma parte del origen visual de Patagonia Salvaje: fauna real de la Patagonia transformada en una propuesta textil que invita a mirar con más atención nuestro entorno."
+data-en="This photograph is part of the visual origin of Patagonia Salvaje: real Patagonian wildlife transformed into a textile proposal that invites us to look more closely at our surroundings.">Esta fotografía forma parte del origen visual de Patagonia Salvaje: fauna real de la Patagonia transformada en una propuesta textil que invita a mirar con más atención nuestro entorno.</p></div>
+<div class="aura-card"><p class="qr-title" data-es="EXPERIENCIA QR" data-en="QR EXPERIENCE">EXPERIENCIA QR</p>
+<p data-es="El producto te invita a conocer y descubrir más sobre cada especie." data-en="The product invites you to learn and discover more about each species.">El producto te invita a conocer y descubrir más sobre cada especie.</p>
+<a class="back" href="../index.html#especies" data-es="← Volver a Los protagonistas" data-en="← Back to The protagonists">← Volver a Los protagonistas</a></div>
+</div></section>
+</main>
+<footer class="footer"><img src="../assets/images/logo.png" alt="Aura Textil"><p>Patagonia Salvaje · Aura Textil</p></footer>
+<script src="species.js"></script>
+</body></html>
