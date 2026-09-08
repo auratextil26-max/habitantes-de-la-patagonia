@@ -2,7 +2,7 @@
 :root{--forest:#10241f;--cream:#f2eee4;--accent:#9fb06c;--ink:#16201c}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--forest);color:#f7f3ea}a{color:inherit;text-decoration:none}img{display:block;width:100%}
 .top{position:fixed;z-index:20;top:14px;left:50%;transform:translateX(-50%);width:min(1180px,calc(100% - 28px));display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:rgba(7,20,17,.7);backdrop-filter:blur(16px)}
-.top img{width:145px;max-height:78px;object-fit:contain}.top-right{display:flex;gap:18px;align-items:center;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}.lang button{border:0;background:none;color:#aaa;cursor:pointer}.lang button.active{color:#fff}
+.top img{width:105px;max-height:65px;object-fit:contain}.top-right{display:flex;gap:18px;align-items:center;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}.lang button{border:0;background:none;color:#aaa;cursor:pointer}.lang button.active{color:#fff}
 .hero{min-height:100svh;display:grid;grid-template-columns:1.08fr .92fr;background:var(--forest)}.photo{min-height:100svh;position:relative;overflow:hidden}.photo img{height:100%;min-height:100svh;object-fit:cover}.photo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 65%,var(--forest))}
 .hero-copy{display:flex;flex-direction:column;justify-content:center;padding:120px clamp(32px,6vw,95px) 80px 40px}.eyebrow{color:var(--accent);font-size:.72rem;font-weight:600;letter-spacing:.2em}.hero h1,.section h2,.sound h2,.aura h2{font-family:"Cormorant Garamond",Georgia,serif}.hero h1{font-size:clamp(4rem,7vw,7rem);font-weight:500;line-height:.84;margin:15px 0 7px}.latin{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:1.35rem;color:#c9cec8;margin:0 0 28px}.intro{font-size:1.05rem;line-height:1.75;color:#d4d7d2;max-width:580px}
 .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:35px;padding-top:28px;border-top:1px solid rgba(255,255,255,.15)}.fact b{display:block;color:var(--accent);font-size:.67rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:7px}.fact span{font-size:.86rem;line-height:1.45;color:#e3e3dd}
@@ -15,7 +15,7 @@
 
 @media(max-width:680px){
 .top{top:8px;width:calc(100% - 16px);padding:8px 11px}
-.top img{width:112px;max-height:64px}
+.top img{width:88px;max-height:58px}
 .hero{display:block;min-height:auto}
 .photo{min-height:56svh;height:56svh}
 .photo img{height:56svh;min-height:56svh;object-fit:cover}
@@ -24,4 +24,20 @@
 .section{padding:72px 20px}
 .sound,.aura{padding:72px 20px}
 .back{min-height:44px;display:inline-flex;align-items:center}
+}
+
+/* V4.7.2 — logo Aura Textil más visible, sin aumentar la barra */
+.top img{
+  width:145px !important;
+  max-height:78px !important;
+  transform:scale(1.48);
+  transform-origin:left center;
+}
+@media(max-width:700px){
+  .top img{
+    width:108px !important;
+    max-height:62px !important;
+    transform:scale(1.30);
+    transform-origin:left center;
+  }
 }
