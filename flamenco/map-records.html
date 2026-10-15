@@ -1,0 +1,21 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><style>html,body,#map{width:100%;height:100%;margin:0;overflow:hidden}img{max-width:none!important}.leaflet-container{font:13px Arial,sans-serif}#status{position:absolute;top:9px;left:9px;right:58px;z-index:900;background:rgba(255,255,255,.94);border-radius:4px;padding:8px 10px;color:#263c30;font:12px/1.4 Arial,sans-serif;pointer-events:none}.leaflet-popup-content a{color:#246044}</style></head><body><div id="map"></div><div id="status" role="status">Cargando registros de biodiversidad…</div><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script>
+(async()=>{
+const names={'flamenco':'Phoenicopterus chilensis','puma':'Puma concolor','condor':'Vultur gryphus','guanaco':'Lama guanicoe','carpintero-negro':'Campephilus magellanicus','martin-pescador':'Megaceryle torquata'};
+const slug=new URLSearchParams(location.search).get('species')||'flamenco';const name=names[slug];const status=document.getElementById('status');if(!name||!window.L){status.textContent='Mapa no disponible';return}
+const map=L.map('map',{scrollWheelZoom:false});L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap',maxZoom:18}).addTo(map);
+const bounds=L.latLngBounds([[-55.8,-76],[-43.5,-67]]);map.fitBounds(bounds,{padding:[10,10]});
+try{
+const taxon=await fetch('https://api.gbif.org/v1/species/match?name='+encodeURIComponent(name)).then(r=>{if(!r.ok)throw Error('taxon');return r.json()});if(!taxon.usageKey)throw Error('taxon');
+const qs=new URLSearchParams({taxonKey:taxon.usageKey,hasCoordinate:'true',hasGeospatialIssue:'false',limit:'300',year:'2000,2026'});
+const response=await fetch('https://api.gbif.org/v1/occurrence/search?'+qs).then(r=>{if(!r.ok)throw Error('records');return r.json()});
+let count=0;const seen=new Set();
+for(const o of response.results||[]){const lat=o.decimalLatitude,lon=o.decimalLongitude;if(!Number.isFinite(lat)||!Number.isFinite(lon)||lat< -55.8||lat> -43.5||lon< -76||lon> -67)continue;
+const key=lat.toFixed(3)+','+lon.toFixed(3);if(seen.has(key))continue;seen.add(key);
+const marker=L.circleMarker([lat,lon],{radius:5,color:'#873d30',weight:1,fillColor:'#c86d50',fillOpacity:.8}).addTo(map);
+const popup=document.createElement('div');const strong=document.createElement('strong');strong.textContent=name;popup.append(strong,document.createElement('br'),document.createTextNode('Registro GBIF · '+(o.eventDate||'fecha no disponible')),document.createElement('br'));
+const a=document.createElement('a');a.href='https://www.gbif.org/occurrence/'+encodeURIComponent(o.key);a.target='_blank';a.rel='noopener noreferrer';a.textContent='Ver registro original ↗';popup.append(a);marker.bindPopup(popup);count++}
+status.textContent=count?'● '+count+' registros georreferenciados de GBIF (muestra, no distribución completa)':'No hay registros en esta muestra; no significa ausencia de la especie';
+}catch(e){status.textContent='No fue posible cargar los registros de GBIF. Intenta nuevamente.'}
+setTimeout(()=>map.invalidateSize(),300);
+})();
+</script></body></html>
