@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="species.css">
 <style>:root{--species-panel:#d7c5b4;--species-text:#2b241f;--accent:#665447} .discover{background:#eae5da;color:#26372e;padding:85px 24px}.discover-inner{max-width:1180px;margin:auto}.discover h2{font:500 clamp(2.7rem,5vw,4.5rem)/1 'Cormorant Garamond',Georgia,serif;margin:10px 0 30px}.discover-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.discover-card{background:#f8f5ed;border:1px solid #d6d0c3;border-radius:13px;padding:25px}.discover-card .number{font-size:.72rem;letter-spacing:.16em;color:#687e70}.discover-card h3{font:600 1.1rem Inter,sans-serif;margin:15px 0 12px}.discover-card p{line-height:1.75;font-size:.92rem;color:#46564b}.discover-source{display:block;margin-top:24px;color:#345b45;text-decoration:underline;font-size:.84rem}@media(max-width:750px){.discover{padding:65px 20px}.discover-grid{grid-template-columns:1fr}}</style>
+<style>.quick-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:17px 15px;background:#f3efe5;border-bottom:1px solid #ded8cb}.quick-nav a{color:#304c3a;text-decoration:none;border:1px solid #b8c4b5;border-radius:30px;padding:11px 16px;font:500 .8rem Inter,sans-serif;min-height:44px;display:inline-flex;align-items:center}.quick-nav a:focus-visible{outline:3px solid #59785c;outline-offset:2px}#descubre,#sonidos,#mapa{scroll-margin-top:24px}@media(max-width:650px){.quick-nav{gap:8px}.quick-nav a{flex:1 1 auto;justify-content:center;font-size:.76rem;padding:10px}}</style>
 </head>
 <body>
 <header class="top">
@@ -17,6 +18,7 @@
 </div>
 </header>
 <main>
+<nav class="quick-nav" aria-label="Navegación de la especie"><a href="#descubre" data-es="Descubre la especie ↓" data-en="Discover the species ↓">Descubre la especie ↓</a><a href="#mapa" data-es="Explora el mapa ↓" data-en="Explore the map ↓">Explora el mapa ↓</a><a href="#sonidos" data-es="Escucha su voz ↓" data-en="Listen to its voice ↓">Escucha su voz ↓</a></nav>
 <section class="hero">
 <div class="photo"><img src="../assets/images/puma.jpg" alt="Puma"></div>
 <div class="hero-copy">
@@ -48,7 +50,7 @@
 </div>
 <a class="discover-source" href="https://www.iucnredlist.org/search?query=Puma%20concolor&amp;searchType=species" target="_blank" rel="noopener noreferrer" data-es="Consultar evaluación y fuentes de conservación (UICN) ↗" data-en="Read conservation assessments and sources (IUCN) ↗">Consultar evaluación y fuentes de conservación (UICN) ↗</a>
 </div></section>
-<section class="sound"><div class="sound-inner">
+<section id="sonidos" class="sound"><div class="sound-inner">
 <div><p class="eyebrow" data-es="SONIDOS DE LA PATAGONIA" data-en="SOUNDS OF PATAGONIA">SONIDOS DE LA PATAGONIA</p><h2 data-es="Escucha su voz" data-en="Listen to its voice">Escucha su voz</h2></div>
 <div><p data-es="Aunque suele asociarse al silencio, el puma utiliza distintas vocalizaciones para comunicarse. Escucha aquí uno de sus registros." data-en="Although often associated with silence, pumas use different vocalizations to communicate. Listen to one of their recordings here.">Aunque suele asociarse al silencio, el puma utiliza distintas vocalizaciones para comunicarse. Escucha aquí uno de sus registros.</p>
 <div class="player"><audio controls preload="metadata"><source src="../assets/audio/puma.mp3" type="audio/mpeg"></audio></div></div>
